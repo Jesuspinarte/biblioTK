@@ -1,0 +1,18 @@
+<div class="lista-lib">
+  <h1>Libros</h1>
+    <nav>
+      <ol>
+        <!-- ENRUTA "DINÁMICAMENTE" A UNA PÁGINA -->
+        <li *ngFor="let l of libros">
+          <div>{{l.nombre}}</div>
+          <div>
+            <a (click)="selectLibro(l)" [routerLink]="" routerLinkActive="router-link-active" >VER</a>
+            <a [routerLink]="['/biblioTK/editar-libro/',l.id]" routerLinkActive="router-link-active">EDITAR</a>
+            <a>BORRAR</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+</div>
+
+<app-vista-libro [libro]="libro_seleccionado"></app-vista-libro>
