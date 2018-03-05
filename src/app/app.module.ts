@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { ListaLibroComponent } from './libros/lista-libro/lista-libro.component';
 import { VistaLibroComponent } from './libros/vista-libro/vista-libro.component';
 import { EditarLibroComponent } from './libros/editar-libro/editar-libro.component';
+import { AddLibroComponent } from './add-libro/add-libro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaLibroComponent,
     VistaLibroComponent,
-    EditarLibroComponent
+    EditarLibroComponent,
+    AddLibroComponent,
+    
   ],
   imports: [
     BrowserModule,

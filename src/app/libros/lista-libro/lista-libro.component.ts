@@ -22,4 +22,6 @@ export class ListaLibroComponent implements OnInit {
     this.libro_seleccionado = libro;
   }
 
+
+
 }
