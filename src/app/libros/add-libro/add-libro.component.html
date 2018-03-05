@@ -1,16 +1,15 @@
-<input class="form-control" type="text" #nombre             
-placeholder="Ingrese nombre" required>
+<input class="inputNombre" type="text" #nombreAdd placeholder="Ingrese nombre" required>
 
-<input class="form-control"type="text" #isbn    
-placeholder="Ingrese ISBN" required>
+<input class="inputIsbn"  type="text" #isbnAdd placeholder="Ingrese ISBN" required>
 
 <div>
-    <textarea cols="47" rows="3" name="comment" form="usrform" placeholder="Ingrese Autores" #autores required ></textarea>
+    <textarea cols="47" rows="3" name="comment" form="usrform" placeholder="Ingrese Autores" #autoresAdd required></textarea>
 </div>
 
 
-<input class="form-control" type="submit"    
-(click)='submitFunct(nombre.value, isbn.value, autores.value); 
-nombre.value =""; isbn.value="";autores.value=""; ' >
+<input class="inputAutores" type="submit" (click) = 'submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); 
+nombreAdd.value =""; isbnAdd.value="";autoresAdd.value=""; '>
 <br>
-<div><a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active" >REGRESAR</a></div>
+<div>
+    <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
+</div>

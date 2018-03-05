@@ -22,6 +22,12 @@ export class ListaLibroComponent implements OnInit {
     this.libro_seleccionado = libro;
   }
 
+  eliminarLibro( libro: Libro ){
+    let index = this.db_libros.listarLibros().indexOf(libro, 0);
+    if (index > -1) {
+      this.db_libros.listarLibros().splice(index, 1);
+    }
+  }
 
 
 }
