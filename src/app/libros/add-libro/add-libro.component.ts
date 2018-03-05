@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Libro } from '../libros/shared/libro';
-import { DbLibroService } from '../libros/shared/db-libro.service';
+import { Libro } from '../shared/libro';
+import { DbLibroService } from '../shared/db-libro.service';
+
 
 @Component({
   selector: 'app-add-libro',
@@ -29,7 +30,6 @@ export class AddLibroComponent implements OnInit {
       this.libros.push(this.aLibro);
 
   }
-  console.log(this.aLibro.id);
  }
 
 }
