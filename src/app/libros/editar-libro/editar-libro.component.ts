@@ -24,4 +24,17 @@ export class EditarLibroComponent implements OnInit {
       this.libro = this.db_libros.listarLibros().find( l => l.id === this.LibroID );
   }
 
+  modificarLibro( nombre: string, isbn: string, autores: string ) {
+    if( nombre === "" || isbn === "" || autores === "" ) {
+      return ( false );
+    } else {
+      this.libro.nombre = nombre;
+      this.libro.isbn = isbn;
+      this.libro.autores = autores;
+      nombre = "";
+      isbn = "";
+      autores = "";
+    }
+  }
+
 }
