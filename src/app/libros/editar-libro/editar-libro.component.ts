@@ -24,9 +24,9 @@ export class EditarLibroComponent implements OnInit {
       this.libro = this.db_libros.listarLibros().find( l => l.id === this.LibroID );
   }
 
-  modificarLibro( nombre: string, isbn: string, autores: string ) {
+  modificarLibro( nombre: string, isbn: string, autores: string ): void {
     if( nombre === "" || isbn === "" || autores === "" ) {
-      return ( false );
+      return 
     } else {
       this.libro.nombre = nombre;
       this.libro.isbn = isbn;

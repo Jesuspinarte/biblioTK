@@ -23,12 +23,17 @@ export class AddLibroComponent implements OnInit {
       return
     } else {
       this.aLibro = new Libro();
-      this.aLibro.id = this.libros.length + 1;
+      
+      if( this.db_libros.getIDs().length > 0 ) {
+        this.aLibro.id = this.db_libros.getIDs().pop();
+      } else {
+        this.aLibro.id = this.libros.length + 1;
+      }
+
       this.aLibro.nombre = nombre;
       this.aLibro.isbn = isbn;
       this.aLibro.autores = autores;
       this.libros.push(this.aLibro);
-
     }
   }
 
