@@ -4,6 +4,8 @@ import { Libro } from './libro';
 @Injectable()
 export class DbLibroService {
 
+  ids: number[] = [];
+
   libros: Libro[] = [
     { id: 1, nombre: 'El Quijote', isbn: '100-080', autores: 'Miguel de Cervantes' },
     { id: 2, nombre: 'IT', isbn: '100-110', autores: 'Stephen King' },
@@ -14,7 +16,11 @@ export class DbLibroService {
   constructor() { }
 
   listarLibros(): Libro[] {
-    return this.libros;
+    return ( this.libros );
+  }
+
+  getIDs(): number[] {
+    return ( this.ids );
   }
 
 }

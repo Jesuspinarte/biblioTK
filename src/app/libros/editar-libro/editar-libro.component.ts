@@ -31,9 +31,6 @@ export class EditarLibroComponent implements OnInit {
       this.libro.nombre = nombre;
       this.libro.isbn = isbn;
       this.libro.autores = autores;
-      nombre = "";
-      isbn = "";
-      autores = "";
     }
   }
 

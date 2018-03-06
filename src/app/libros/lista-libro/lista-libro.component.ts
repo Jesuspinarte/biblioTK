@@ -23,11 +23,14 @@ export class ListaLibroComponent implements OnInit {
   }
 
   eliminarLibro( libro: Libro ){
+    this.db_libros.getIDs().push( libro.id );
+
     let index = this.db_libros.listarLibros().indexOf(libro, 0);
+
     if (index > -1) {
       this.db_libros.listarLibros().splice(index, 1);
     }
+    
   }
-
 
 }

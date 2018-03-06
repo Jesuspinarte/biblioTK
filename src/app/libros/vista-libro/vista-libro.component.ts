@@ -18,8 +18,6 @@ export class VistaLibroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ruta.params
-      .subscribe( params => this.LibroID = +params['id'] );
   }
 
 }
