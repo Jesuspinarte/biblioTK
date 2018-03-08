@@ -7,8 +7,7 @@
 </div>
 
 
-<input class="inputAutores" type="submit" (click) = 'submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); 
-nombreAdd.value =""; isbnAdd.value="";autoresAdd.value=""; '>
+<input class="inputAutores" type="submit" value="Agregar Libro" (click) = 'submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); '>
 <br>
 <div>
     <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
