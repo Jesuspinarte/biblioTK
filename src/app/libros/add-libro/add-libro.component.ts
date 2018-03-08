@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Libro } from '../shared/libro';
 import { DbLibroService } from '../shared/db-libro.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class AddLibroComponent implements OnInit {
 
   aLibro: Libro;
   libros: Libro[];
-  constructor(public db_libros: DbLibroService) { }
+  constructor(public db_libros: DbLibroService,public router: Router) { }
 
   ngOnInit() {
     this.libros = this.db_libros.listarLibros();
@@ -20,6 +21,7 @@ export class AddLibroComponent implements OnInit {
 
   submitFunct(nombre, isbn, autores): void {
     if (nombre === "" || isbn === "" || autores === "") {
+      window.alert("Llene todos los campos")
       return
     } else {
       this.aLibro = new Libro();
@@ -34,6 +36,7 @@ export class AddLibroComponent implements OnInit {
       this.aLibro.isbn = isbn;
       this.aLibro.autores = autores;
       this.libros.push(this.aLibro);
+      this.router.navigate(['/biblioTK/lista-libro'])
     }
   }
 
