@@ -13,10 +13,10 @@ export class AddLibroComponent implements OnInit {
 
   aLibro: Libro;
   libros: Libro[];
-  constructor(public db_libros: DbLibroService,public router: Router) { }
+  constructor(public db_libros: DbLibroService, public router: Router) { }
 
   ngOnInit() {
-    this.libros = this.db_libros.listarLibros();
+    //this.libros = this.db_libros.listarLibros();
   }
 
   submitFunct(nombre, isbn, autores): void {
@@ -25,8 +25,8 @@ export class AddLibroComponent implements OnInit {
       return
     } else {
       this.aLibro = new Libro();
-      
-      if( this.db_libros.getIDs().length > 0 ) {
+
+      if (this.db_libros.getIDs().length > 0) {
         this.aLibro.id = this.db_libros.getIDs().pop();
       } else {
         this.aLibro.id = this.libros.length + 1;

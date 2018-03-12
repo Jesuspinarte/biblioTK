@@ -21,7 +21,7 @@ export class EditarLibroComponent implements OnInit {
   ngOnInit() {
     this.ruta.params
       .subscribe( params => this.LibroID = +params['id'] );
-      this.libro = this.db_libros.listarLibros().find( l => l.id === this.LibroID );
+      //this.libro = this.db_libros.listarLibros().find( l => l.id === this.LibroID );
   }
 
   modificarLibro( nombre: string, isbn: string, autores: string ): void {

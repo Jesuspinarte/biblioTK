@@ -1,6 +1,7 @@
 import { DbLibroService } from './libros/shared/db-libro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -21,7 +22,8 @@ import { AddLibroComponent } from './libros/add-libro/add-libro.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [DbLibroService],
   bootstrap: [AppComponent]

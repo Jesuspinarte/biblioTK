@@ -3,6 +3,4 @@ export class Libro{
     nombre: string;
     isbn: string;
     autores: string;
-
-    constructor() {}
 }
