@@ -15,13 +15,15 @@ export class ListaLibroComponent implements OnInit {
   constructor( public db_libros: DbLibroService ) { }
 
   ngOnInit() {
-    this.libros = this.db_libros.listarLibros();
+    this.db_libros.listarLibros()
+                  .subscribe(libros => this.libros = libros);
   }
 
   selectLibro( libro: Libro ){
     this.libro_seleccionado = libro;
   }
 
+  /*
   eliminarLibro( libro: Libro ){
     this.db_libros.getIDs().push( libro.id );
 
@@ -32,5 +34,6 @@ export class ListaLibroComponent implements OnInit {
     }
     
   }
+  */
 
 }
