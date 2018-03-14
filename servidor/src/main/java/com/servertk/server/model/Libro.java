@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Libro {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nombre;
@@ -24,6 +24,13 @@ public class Libro {
 	@ManyToOne
 	@JsonIgnore
 	private Biblioteca despensa;
+	
+	public Libro setLibro( Libro libro ) {
+		this.nombre = libro.nombre;
+		this.isbn = libro.isbn;
+		this.autores = libro.autores;
+		return this;
+	}
 
 	public Long getId() {
 		return id;

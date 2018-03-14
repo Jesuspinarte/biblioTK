@@ -11,7 +11,7 @@ import { DbLibroService } from '../shared/db-libro.service';
 export class EditarLibroComponent implements OnInit {
 
   LibroID: number;
-  libro: Libro;
+  libro: Libro = { id: -1, nombre: '', isbn: '', autores: ''};
 
   constructor( 
     private ruta: ActivatedRoute,
@@ -21,7 +21,7 @@ export class EditarLibroComponent implements OnInit {
   ngOnInit() {
     this.ruta.params
       .subscribe( params => this.LibroID = +params['id'] );
-      //this.libro = this.db_libros.listarLibros().find( l => l.id === this.LibroID );
+      this.db_libros.listarLibros().subscribe( libros => this.libro = libros.find( l => l.id === this.LibroID ) );
   }
 
   modificarLibro( nombre: string, isbn: string, autores: string ): void {
@@ -31,6 +31,8 @@ export class EditarLibroComponent implements OnInit {
       this.libro.nombre = nombre;
       this.libro.isbn = isbn;
       this.libro.autores = autores;
+
+      this.db_libros.update( this.libro );
     }
   }
 

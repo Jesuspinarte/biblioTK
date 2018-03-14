@@ -16,7 +16,7 @@ export class DbLibroService {
   constructor( private http: HttpClient) { }
 
   listarLibros(): Observable<Libro[]> {
-    return ( this.http.get<Libro[]>( this.url_libros) );
+    return ( this.http.get<Libro[]>( this.url_libros ) );
   }
 
   getIDs(): number[] {
@@ -43,9 +43,41 @@ export class DbLibroService {
     }
   }
 
+  update( up_libro: Libro ) : boolean
+  {
+    if (up_libro.nombre === "" || up_libro.isbn === "" || up_libro.autores === "") {
+      return false;
+    } else {
+      
+      this.updateLibro(up_libro)
+      .subscribe(libro => this.libros.push(libro));
+   
+      return true;
+    }
+  }
+
+  delete( del_libro: Libro ): boolean
+  {
+    console.log(this.ids.length);
+    this.deleteLibro(del_libro)
+    .subscribe(libro => this.libros.push(libro));
+    return;
+  }
+
   addLibro (lib: Libro): Observable<Libro> {
     const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json','Authorization': 'my-auth-token'})};
-    return this.http.post<Libro>(this.url_libros, lib, httpOptions)
+    return this.http.post<Libro>(this.url_libros, lib, httpOptions);
+  }
+
+  updateLibro( libro: Libro ): Observable<Libro> {
+    const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json','Authorization': 'my-auth-token'})};
+    return this.http.put<Libro>(this.url_libros, libro, httpOptions);
+  }
+
+  deleteLibro( libro: Libro ): Observable<Libro> {
+    const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json','Authorization': 'my-auth-token'})};
+    return this.http.delete<Libro>( this.url_libros + '/' + libro.id, httpOptions );
+    
   }
   
 }

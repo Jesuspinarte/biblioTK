@@ -33,17 +33,48 @@ public class LibroService {
 	Optional<Libro> find(@PathVariable("id") Long id) {
 		return repository.findById(id);
 	}
+	
 	@RequestMapping(value = "/libros", method = RequestMethod.POST)
-	public ResponseEntity<Libro> update(@RequestBody Libro libro) {
+	public ResponseEntity<Libro> addLibro(@RequestBody Libro libro) {
 		
 		System.out.println(libro.getId());
 		System.out.println(libro.getNombre());
 		System.out.println(libro.getAutores());
 		System.out.println(libro.getIsbn());
+		Long aux = new Long(1);
+		libro.setDespensa( repository.findById(aux).get().getDespensa() );
 		
 			
 		repository.save(libro);
 		
 	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
+	
+	
+	@RequestMapping(value = "/libros", method = RequestMethod.PUT)
+	public ResponseEntity<Libro> updateLibro(@RequestBody Libro libro) {
+		
+		System.out.println(libro.getId());
+		System.out.println(libro.getNombre());
+		System.out.println(libro.getAutores());
+		System.out.println(libro.getIsbn());
+			
+		libro = repository.findById(libro.getId()).get().setLibro(libro);
+		repository.save(libro);
+		
+	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value = "/libros/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Libro> deleteLibro(@PathVariable("id") Long id) {
+		
+		System.out.println(id);
+			
+		Libro libro = repository.findById(id).get();
+		repository.delete(libro);
+		
+	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
+	}
+	
 }

@@ -14,7 +14,7 @@ import utils.RolesEmpleado;
 public class Empleado {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nickname;
