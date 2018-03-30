@@ -1,4 +1,4 @@
-package com.servertk.server.model;
+package co.edu.javeriana.myapp.server.myappserver.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

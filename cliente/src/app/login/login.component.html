@@ -1,0 +1,14 @@
+<div>
+  <form (ngSubmit)="doLogin()">
+    <input type="text" [(ngModel)]="user" name="user" placeholder="Usuario">
+    <input type="text" [(ngModel)]="password" name="pass" placeholder="Contraseña">
+    <button type="submit" id="login">Login</button>
+  </form>
+
+  <button (click)="logout()">logout</button>
+  <pre>
+    {{message}}
+  </pre>
+
+
+</div>
