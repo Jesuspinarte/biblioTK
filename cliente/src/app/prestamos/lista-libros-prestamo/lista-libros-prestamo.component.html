@@ -1,0 +1,32 @@
+<h1>Bienvenido {{ prestamista }} <h1>
+
+    <table class="table">
+        <tr *ngFor="let l of libros">
+          <td class="libro_tabla">
+            Id: {{l.id}} <br>
+            Titulo: {{l.nombre}} <br>
+            Autores: {{l.autores}} <br>
+            ISBN: {{l.isbn}}  <br>
+            <div *ngIf= "l.prestado" >
+            LIBRE: NO
+            Persona: {{l.prestadoA}}  <br>
+            Fecha de prestamo: {{l.fechaPrestamo}}  <br>
+            Finalizacion de prestamo: {{l.finPrestamo}}  <br>
+            </div>
+            <div *ngIf= "!l.prestado" >
+              LIBRE: SI
+            </div>
+          </td>
+          <td class= "btn" >
+           <div *ngIf="!l.prestado"> <button (click)="prestar(l)"><strong>Prestar</strong></button> </div>
+          <div *ngIf="l.prestado"> <button (click)="accept()"><strong>Devolver</strong></button> </div>
+          
+          </td>
+        </tr>
+      </table>
+      <input type="number"  name="input"  [(ngModel)]="time"
+      min="1" max="6"  required> <label class="formu" >Seleccione numero de meses del prestamo</label>
+
+
+
+     

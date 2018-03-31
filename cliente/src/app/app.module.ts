@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { VistaLibroComponent } from './libros/vista-libro/vista-libro.component'
 import { EditarLibroComponent } from './libros/editar-libro/editar-libro.component';
 import { AddLibroComponent } from './libros/add-libro/add-libro.component';
 import { LoginComponent } from './login/login.component';
+import { ListaLibrosPrestamoComponent } from './prestamos/lista-libros-prestamo/lista-libros-prestamo.component';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +24,15 @@ import { LoginComponent } from './login/login.component';
     EditarLibroComponent,
     AddLibroComponent,
     LoginComponent,
+    ListaLibrosPrestamoComponent,
+
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [DbLibroService],
   bootstrap: [AppComponent]

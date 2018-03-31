@@ -65,6 +65,25 @@ public class LibroService {
 	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
 	
+
+	@RequestMapping(value = "/libros/prestamos", method = RequestMethod.PUT)
+	public ResponseEntity<Libro> updatePrestamo(@RequestBody Libro libro) {
+		
+		System.out.println(libro.getId());
+		System.out.println(libro.getNombre());
+		System.out.println(libro.getAutores());
+		System.out.println(libro.getIsbn());
+		System.out.println(libro.getPrestado());
+		System.out.println(libro.getPrestadoA());
+		System.out.println(libro.getFechaPrestamo().toString());
+		System.out.println(libro.getFinPrestamo().toString());
+			
+		libro = repository.findById(libro.getId()).get().setLibro(libro);
+		repository.save(libro);
+		
+	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping(value = "/libros/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Libro> deleteLibro(@PathVariable("id") Long id) {

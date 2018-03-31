@@ -1,5 +1,7 @@
 package co.edu.javeriana.myapp.server.myappserver.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,12 @@ public class Libro {
 	private String nombre;
 	private String isbn;
 	private String autores;
+	private Boolean prestado;
+	private Date fechaPrestamo;
+	private Date finPrestamo;
+	private String prestadoA;
+	
+	
 	
 	/*---------------------------------------*/
 	
@@ -71,6 +79,40 @@ public class Libro {
 	public void setDespensa(Biblioteca despensa) {
 		this.despensa = despensa;
 	}
+
+	public Boolean getPrestado() {
+		return prestado;
+	}
+
+	public void setPrestado(Boolean prestado) {
+		this.prestado = prestado;
+	}
+
+	public Date getFechaPrestamo() {
+		return fechaPrestamo;
+	}
+
+	public void setFechaPrestamo(Date fechaPrestamo) {
+		this.fechaPrestamo = fechaPrestamo;
+	}
+
+	public Date getFinPrestamo() {
+		return finPrestamo;
+	}
+
+	public void setFinPrestamo(Date finPrestamo) {
+		this.finPrestamo = finPrestamo;
+	}
+
+	public String getPrestadoA() {
+		return prestadoA;
+	}
+
+	public void setPrestadoA(String prestadoA) {
+		this.prestadoA = prestadoA;
+	}
+	
+	
 	
 	
 }

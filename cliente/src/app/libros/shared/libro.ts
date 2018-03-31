@@ -3,4 +3,8 @@ export class Libro{
     nombre: string;
     isbn: string;
     autores: string;
+    prestado : boolean;
+    fechaPrestamo : Date;
+    finPrestamo : Date;
+    prestadoA : String;
 }
