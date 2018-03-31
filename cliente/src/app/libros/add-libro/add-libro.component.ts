@@ -16,31 +16,31 @@ export class AddLibroComponent implements OnInit {
   constructor(public db_libros: DbLibroService, public router: Router) { }
 
   ngOnInit() {
-
+    
     this.db_libros.listarLibros()
-      .subscribe(libros => this.libros = libros);
+    .subscribe(libros => this.libros = libros);    
   }
 
   submitFunct(nombre, isbn, autores): void {
+    var id= this.pickid();
 
-    if (nombre === "" || isbn === "" || autores === "")
-      window.alert("Llene todos los campos")
-
-    else {
-
-      this.db_libros.add(nombre, isbn, autores)
-                    .subscribe();
+   if(!this.db_libros.add(id,nombre, isbn, autores))
+    window.alert("Llene todos los campos")
+   
+    else{
+   
+      
       window.alert(nombre + " Añadido correctamente")
       this.router.navigate(['/biblioTK/lista-libro']);
     }
-  }
+ }
 
-  pickid() {
-    if (this.db_libros.getIDs().length > 0) {
-      return this.db_libros.getIDs().pop();
-    } else {
-      return this.libros.length + 1;
-    }
-  }
+ pickid(){
+  if (this.db_libros.getIDs().length > 0) {
+    return this.db_libros.getIDs().pop();
+  } else {
+   return this.libros.length + 1;
+   }
+ }
 
 }

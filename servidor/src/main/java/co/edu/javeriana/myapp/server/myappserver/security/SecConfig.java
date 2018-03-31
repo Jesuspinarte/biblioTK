@@ -53,11 +53,7 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 					.failureHandler(new SimpleUrlAuthenticationFailureHandler())
 			.and()
 				.logout()
-					.logoutSuccessHandler(logoutSuccessHandler)
-			.and()
-				.authorizeRequests()
-					.antMatchers("/todas-bibliotecas/**").permitAll()
-					.anyRequest().permitAll();
+					.logoutSuccessHandler(logoutSuccessHandler);
 				
 		
 		http.addFilterAfter(new AuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
