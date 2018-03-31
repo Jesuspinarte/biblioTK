@@ -2,6 +2,8 @@ package co.edu.javeriana.myapp.server.myappserver;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.javeriana.myapp.server.myappserver.model.Libro;
@@ -69,6 +72,7 @@ public class LibroService {
 	}
 	
 
+	@PreAuthorize("hasRole('ROLE_ENCARGADO_PRESTAMOS')") // TODO ver http://www.baeldung.com/spring-security-expressions-basic
 	@RequestMapping(value = "/libros/prestamos", method = RequestMethod.PUT)
 	public ResponseEntity<Libro> updatePrestamo(@RequestBody Libro libro) {
 		
@@ -83,6 +87,7 @@ public class LibroService {
 			
 		libro = repository.findById(libro.getId()).get().setLibro(libro);
 		repository.save(libro);
+		System.out.println(repository.findById(libro.getId()).get().getPrestado());
 		
 	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
