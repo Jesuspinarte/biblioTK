@@ -1,0 +1,19 @@
+.libro_tabla {
+
+    font-size: 20px;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.formu{
+    font-size: 25px;
+    text-align: left;
+
+}

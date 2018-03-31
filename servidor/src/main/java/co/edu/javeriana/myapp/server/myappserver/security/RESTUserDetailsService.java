@@ -51,7 +51,7 @@ public class RESTUserDetailsService implements UserDetailsService {
 		
 		Empleado ne = new Empleado( e.getUsername(), e.getPassword(), e.getRol().toString() );
 		e.setAuthorities( ne.getAuth() );
-		
+		System.out.println("AUTH  "+ ne.getRol());
 		return ( e );
 	}	
 

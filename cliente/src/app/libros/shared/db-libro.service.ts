@@ -2,12 +2,14 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Libro } from './libro';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class DbLibroService {
 
+  
   // IDs reciclados
   ids: number[] = [];
 
@@ -17,7 +19,11 @@ export class DbLibroService {
   user = "";
   pass = "";
 
-  constructor(private http: HttpClient) { }
+ 
+
+  constructor(private http: HttpClient) 
+  {  
+  }
 
   /*----------- INICIO LOGIN/LOGOUT ---------*/
 
@@ -44,6 +50,32 @@ export class DbLibroService {
   }
 
   /*----------- FIN LOGIN/LOGOUT ---------*/
+
+  /*----------- Recuperar Usuario ---------*/
+    getUser(): Promise<any> {
+      const headers = new HttpHeaders();
+      const params = new HttpParams()
+        .set('username', this.user)
+        .set('password', this.pass);
+      return (this.http.get('http://localhost:8080/current', {
+        headers: headers,
+        params: params,
+        withCredentials: true})
+          .toPromise()
+          .then(this.extractData)
+          .catch(this.handleError));
+  }
+
+    private extractData(res: Response) {
+      var obj = JSON.parse(JSON.stringify(res));
+     return (obj.rol);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+}
+  /*----------- FIN Recuperar Usuario ---------*/
 
 
   listarLibros(): Observable<Libro[]> {
@@ -108,6 +140,26 @@ export class DbLibroService {
   updateLibro(libro: Libro): Observable<Libro> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'my-auth-token' }) };
     return this.http.put<Libro>(this.url_libros, libro, httpOptions);
+  }
+
+  upDatePrestamo(libro: Libro , fin:number, persona: String): Observable<Libro>{
+   
+    libro.fechaPrestamo = new Date();
+    libro.finPrestamo = libro.fechaPrestamo;
+    libro.finPrestamo.setMonth(libro.fechaPrestamo.getMonth()+fin);
+    libro.prestadoA = persona;
+    libro.prestado = true;
+    const headers = new HttpHeaders();
+    const params = new HttpParams()
+      .set('username', this.user)
+      .set('password', this.pass);
+       
+    return this.http.put<Libro>('http://localhost:8080/libros/prestamos', libro,{
+      headers: headers,
+      params: params,
+      withCredentials: true
+    });
+   
   }
 
   deleteLibro(libro: Libro): Observable<Libro> {

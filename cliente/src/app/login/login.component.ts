@@ -9,15 +9,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+
   user = '';
   password = '';
 
   result: any;
   message: any;
+  rol : String;
 
   constructor( private db_libros: DbLibroService, public router: Router ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   /*----------- INICIO LOGIN/LOGOUT ---------*/
 
@@ -25,12 +27,18 @@ export class LoginComponent implements OnInit {
     console.log(this.user + ' - ' + this.password);
     this.db_libros.login(this.user, this.password).subscribe(data => {
         this.message = 'Login Ok';
+<<<<<<< HEAD
         this.router.navigate(['/biblioTK/lista-libro'])
 
+=======
+        //this.router.navigate(['/biblioTK/lista-libro']);
+        this.db_libros.getUser().then(result=> this.printRolScreen(result) ).catch(error => console.log(error));
+>>>>>>> master
       }, error => {
         console.error(error);
-        this.message = JSON.stringify(error);
+        this.message = JSON.stringify(error); 
       });
+
   }
 
   logout() {
@@ -44,4 +52,14 @@ export class LoginComponent implements OnInit {
 
   /*----------- FIN LOGIN/LOGOUT ---------*/
 
+  printRolScreen(rol) {
+    
+    if(rol=='BIBLIOTECARIO')
+    this.router.navigate(['/biblioTK/lista-libro']);
+    else if(rol=='ENCARGADO_PRESTAMOS')
+    this.router.navigate(['/biblioTK/libros-prestamo',{name: this.user}]);
+
+  }
 }
+
+   
