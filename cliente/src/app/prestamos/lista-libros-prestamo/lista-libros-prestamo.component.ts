@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, ViewChild,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, ViewChild, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DbLibroService } from '../../libros/shared/db-libro.service';
 import { Libro } from '../../libros/shared/libro';
@@ -15,29 +15,31 @@ export class ListaLibrosPrestamoComponent implements OnInit {
 
 prestamista: String;
   libros: Libro[];
-  libro : Libro;
-  time:number;
-  person:String;
+  libro: Libro;
+  time: number;
+  person: String;
 
-  constructor(private route: ActivatedRoute, public db_libros: DbLibroService, public router: Router ) {
-    
+  constructor(private route: ActivatedRoute, public db_libros: DbLibroService, public router: Router) {
+
     this.route.params.subscribe(params => {
-      this.prestamista = params['name']; 
-   });
+      this.prestamista = params['name'];
+    });
 
-   this.time = 1;
+    this.time = 1;
 
   }
-  
+
   ngOnInit() {
     window.alert("iniciando");
 
     this.db_libros.listarLibros()
-    .subscribe(libros => this.libros = libros);
+      .subscribe(libros => this.libros = libros);
   }
 
-  prestar(libro1: Libro){
+  prestar(libro1: Libro) {
     this.libro = libro1;
+
+    var answer = prompt('Digite el nombre de la persona');
     
  var answer=prompt('Digite el nombre de la persona');
     if(answer !=null)
@@ -47,10 +49,9 @@ prestamista: String;
     this.db_libros.upDatePrestamo(this.libro);
     this.db_libros.subscribePrestamo(this.libro);
     }
-    else if(!answer)
-    {
-    alert('Se necesita el nombre de la persona');
-    return false;
+    else if (!answer) {
+      alert('Se necesita el nombre de la persona');
+      return false;
     }
 else
 {

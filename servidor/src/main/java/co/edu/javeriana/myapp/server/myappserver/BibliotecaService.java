@@ -20,11 +20,18 @@ public class BibliotecaService {
 	@Autowired
 	private BibliotecaRepository repository;
 	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO')")
 	@RequestMapping("/bibliotecas")
 	Iterable<Biblioteca> findAll() {
 		return repository.findAll();
 	}
 	
+	@RequestMapping("/todas-bibliotecas")
+	Iterable<String> nombreBibliotecas() {
+		return repository.nombreBibliotecas();
+	}
+	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO')")
 	@RequestMapping("/bibliotecas/{id}")
 	Optional<Biblioteca> find(@PathVariable("id") Long id) {
 		return repository.findById(id);

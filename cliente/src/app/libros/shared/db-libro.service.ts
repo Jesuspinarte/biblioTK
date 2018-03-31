@@ -19,8 +19,6 @@ export class DbLibroService {
   user = "";
   pass = "";
 
- 
-
   constructor(private http: HttpClient) 
   {  
   }
@@ -71,6 +69,25 @@ export class DbLibroService {
      return (obj.rol);
   }
 
+  getUsername(): Promise<any> {
+    const headers = new HttpHeaders();
+    const params = new HttpParams()
+      .set('username', this.user)
+      .set('password', this.pass);
+    return (this.http.get('http://localhost:8080/api/current-user', {
+      headers: headers,
+      params: params,
+      withCredentials: true})
+        .toPromise()
+        .then(this.extractDataUsername)
+        .catch(this.handleError));
+}
+
+  private extractDataUsername(res: Response) {
+    var obj = JSON.parse(JSON.stringify(res));
+   return (obj.username);
+}
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
@@ -94,22 +111,21 @@ export class DbLibroService {
     return (this.ids);
   }
 
-  add(id, nombre, isbn, autores): boolean {
+  add( nombre, isbn, autores ): Observable<Libro[]> {
     if (nombre === "" || isbn === "" || autores === "") {
-      return false;
+      return ;
     } else {
+
       var add_lib = new Libro();
 
-
-      add_lib.id = id;
       add_lib.nombre = nombre;
       add_lib.isbn = isbn;
       add_lib.autores = autores;
 
-      this.addLibro(add_lib)
-        .subscribe(libro => this.libros.push(libro));
+      return this.http.post<Libro[]>(this.url_libros, add_lib, {
+        withCredentials: true
+      });
 
-      return true;
     }
   }
 
@@ -137,14 +153,11 @@ export class DbLibroService {
     return;
   }
 
-  addLibro(lib: Libro): Observable<Libro> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'my-auth-token' }) };
-    return this.http.post<Libro>(this.url_libros, lib, httpOptions);
-  }
-
   updateLibro(libro: Libro): Observable<Libro> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'my-auth-token' }) };
-    return this.http.put<Libro>(this.url_libros, libro, httpOptions);
+    return this.http.put<Libro>(this.url_libros, libro, {
+      withCredentials: true
+    });
   }
 
   upDatePrestamo(libro: Libro): Observable<Libro>{
@@ -164,7 +177,9 @@ export class DbLibroService {
 
   deleteLibro(libro: Libro): Observable<Libro> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'my-auth-token' }) };
-    return this.http.delete<Libro>(this.url_libros + '/' + libro.id, httpOptions);
+    return this.http.delete<Libro>(this.url_libros + '/' + libro.id, {
+      withCredentials: true
+    });
 
   }
 

@@ -1,14 +1,13 @@
-<div>
+<div *ngIf="!ingresado">
   <form (ngSubmit)="doLogin()">
     <input type="text" [(ngModel)]="user" name="user" placeholder="Usuario">
     <input type="text" [(ngModel)]="password" name="pass" placeholder="Contraseña">
-    <button type="submit" id="login">Login</button>
+    <button type="submit" id="login">Iniciar sesión</button>
   </form>
 
-  <button (click)="logout()">logout</button>
-  <pre>
-    {{message}}
-  </pre>
+</div>
 
-
+<div *ngIf="ingresado">
+  <button (click)="printRolScreen(rol)">Página principal</button>
+  <button (click)="logout()">Cerrar sesión</button>
 </div>

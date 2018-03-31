@@ -27,16 +27,19 @@ public class LibroService {
 	@Autowired
 	private LibroRepository repository;
 	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO') or hasRole('ROLE_ENCARGADO_PRESTAMOS')")
 	@RequestMapping("/libros")
 	Iterable<Libro> findAll() {
 		return repository.findAll();
 	}
 	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO') or hasRole('ROLE_ENCARGADO_PRESTAMOS')")
 	@RequestMapping("/libros/{id}")
 	Optional<Libro> find(@PathVariable("id") Long id) {
 		return repository.findById(id);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO')")
 	@RequestMapping(value = "/libros", method = RequestMethod.POST)
 	public ResponseEntity<Libro> addLibro(@RequestBody Libro libro) {
 		
@@ -45,7 +48,7 @@ public class LibroService {
 		System.out.println(libro.getAutores());
 		System.out.println(libro.getIsbn());
 		Long aux = new Long(1);
-		libro.setDespensa( repository.findById(aux).get().getDespensa() );
+		//libro.setDespensa( repository.findById(aux).get().getDespensa() );
 		
 			
 		repository.save(libro);
@@ -53,7 +56,7 @@ public class LibroService {
 	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO')")
 	@RequestMapping(value = "/libros", method = RequestMethod.PUT)
 	public ResponseEntity<Libro> updateLibro(@RequestBody Libro libro) {
 		
@@ -90,6 +93,7 @@ public class LibroService {
 	}
 	
 	
+	@PreAuthorize("hasRole('ROLE_BIBLIOTECARIO')")
 	@RequestMapping(value = "/libros/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Libro> deleteLibro(@PathVariable("id") Long id) {
 		
