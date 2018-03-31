@@ -8,10 +8,10 @@
             Autores: {{l.autores}} <br>
             ISBN: {{l.isbn}}  <br>
             <div *ngIf= "l.prestado" >
-            LIBRE: NO
+            LIBRE: NO <br>
             Persona: {{l.prestadoA}}  <br>
-            Fecha de prestamo: {{l.fechaPrestamo}}  <br>
-            Finalizacion de prestamo: {{l.finPrestamo}}  <br>
+            Fecha de prestamo: {{l.fechaPrestamo | date:'MM/dd/yyyy'  }}  <br>
+            Finalizacion de prestamo: {{l.finPrestamo | date:'MM/dd/yyyy' }}  <br>
             </div>
             <div *ngIf= "!l.prestado" >
               LIBRE: SI
@@ -19,7 +19,7 @@
           </td>
           <td class= "btn" >
            <div *ngIf="!l.prestado"> <button (click)="prestar(l)"><strong>Prestar</strong></button> </div>
-          <div *ngIf="l.prestado"> <button (click)="accept()"><strong>Devolver</strong></button> </div>
+          <div *ngIf="l.prestado"> <button (click)="devolver(l)"><strong>Devolver</strong></button> </div>
           
           </td>
         </tr>

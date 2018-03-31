@@ -125,6 +125,11 @@ export class DbLibroService {
     }
   }
 
+  subscribePrestamo(up_libro: Libro) {
+      this.upDatePrestamo(up_libro)
+        .subscribe(libro => this.libros.push(libro));
+  }
+
   delete(del_libro: Libro): boolean {
     console.log(this.ids.length);
     this.deleteLibro(del_libro)
@@ -142,24 +147,19 @@ export class DbLibroService {
     return this.http.put<Libro>(this.url_libros, libro, httpOptions);
   }
 
-  upDatePrestamo(libro: Libro , fin:number, persona: String): Observable<Libro>{
+  upDatePrestamo(libro: Libro): Observable<Libro>{
    
-    libro.fechaPrestamo = new Date();
-    libro.finPrestamo = libro.fechaPrestamo;
-    libro.finPrestamo.setMonth(libro.fechaPrestamo.getMonth()+fin);
-    libro.prestadoA = persona;
-    libro.prestado = true;
     const headers = new HttpHeaders();
     const params = new HttpParams()
       .set('username', this.user)
       .set('password', this.pass);
-       
-    return this.http.put<Libro>('http://localhost:8080/libros/prestamos', libro,{
+    return (this.http.put<Libro>('http://localhost:8080/api/prestamos',libro, {
       headers: headers,
       params: params,
       withCredentials: true
-    });
-   
+    }));
+      
+      
   }
 
   deleteLibro(libro: Libro): Observable<Libro> {
