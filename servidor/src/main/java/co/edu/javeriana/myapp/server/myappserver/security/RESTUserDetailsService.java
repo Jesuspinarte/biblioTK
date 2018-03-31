@@ -21,37 +21,40 @@ public class RESTUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private EmpleadoService es;
+	Map<String, Empleado> users = new HashMap<>();
 
 	public RESTUserDetailsService() {
 		super();
-
 	}
+	
 	@Override
 	public Empleado loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO En este método debería recuperarlse la info del usuario desde la base de datos
 		
 		System.out.println("*** Retrieving user");
+		Empleado e = null;
 		
-		//EmpleadoService es = new EmpleadoService();
-		
-		
-		System.out.println("***SERVICE");
-		Empleado e = es.findByUsername(username);
-		if( e == null )
-			System.out.println("NULL");
-		//else if (ems.isEmpty())
-		//	System.out.println("ASDSad");
-		else
-			System.out.println("HAS SOMETHING");
-		
-		
-		//for( Empleado e :  ems ) {
+		if( !users.containsKey(username) ) {
+			//EmpleadoService es = new EmpleadoService();
+			
+			e = es.findByUsername(username);
+			
 			System.out.println(e.getUsername() + " " + e.getPassword() + " " + e.getId() + " " + e.getRol().toString() );
-		//}
+			
+			if( e != null ) {
+				Empleado ne = new Empleado( e.getUsername(), e.getPassword(), e.getRol().toString() );
+				e.setAuthorities( ne.getAuth() );
+				//es.addAuth(e);
+				System.out.println("Rol  "+ e.getRol());
+				System.out.println("AUTH  "+ e.getAuth());
+				users.put(e.getUsername(), e);
+				
+			}
+			
+		} else
+			e = users.get(username);
 		
-		Empleado ne = new Empleado( e.getUsername(), e.getPassword(), e.getRol().toString() );
-		e.setAuthorities( ne.getAuth() );
-		System.out.println("AUTH  "+ ne.getRol());
+		
 		return ( e );
 	}	
 
