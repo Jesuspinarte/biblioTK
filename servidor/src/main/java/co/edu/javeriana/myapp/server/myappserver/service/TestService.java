@@ -1,6 +1,9 @@
 package co.edu.javeriana.myapp.server.myappserver.service;
 
+import co.edu.javeriana.myapp.server.myappserver.EmpleadoService;
 import co.edu.javeriana.myapp.server.myappserver.model.Empleado;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController()
 @RequestMapping("/api")
 public class TestService {
+	
+	// UPDATE PRÉSTAMO Y TODOS LOS MÉTODOS QUE VENGAN DEL CLIENTE
+	
 	@RequestMapping(value = "/test", produces = "application/json")
 	public String test() {
 		return "{\"value\": \"ok\"}";
 	}
     
-    @PreAuthorize("hasRole('BIBLIOTECARIO')") // TODO ver http://www.baeldung.com/spring-security-expressions-basic
+    @PreAuthorize("hasRole('ROLE_BIBLIOTECARIO')") // TODO ver http://www.baeldung.com/spring-security-expressions-basic
 	@RequestMapping(value = "/restricted-method", produces = "application/json")
     public String restrictedMethod() {
         return "{\"value\": \"ok admin\"}";

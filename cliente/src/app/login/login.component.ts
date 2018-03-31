@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
 
   result: any;
   message: any;
-  rol : String;
+  rol: String;
 
-  constructor( private db_libros: DbLibroService, public router: Router ) { }
+  constructor(private db_libros: DbLibroService, public router: Router) { }
 
   ngOnInit() { }
 
@@ -26,40 +26,34 @@ export class LoginComponent implements OnInit {
   doLogin() {
     console.log(this.user + ' - ' + this.password);
     this.db_libros.login(this.user, this.password).subscribe(data => {
-        this.message = 'Login Ok';
-<<<<<<< HEAD
-        this.router.navigate(['/biblioTK/lista-libro'])
-
-=======
-        //this.router.navigate(['/biblioTK/lista-libro']);
-        this.db_libros.getUser().then(result=> this.printRolScreen(result) ).catch(error => console.log(error));
->>>>>>> master
-      }, error => {
-        console.error(error);
-        this.message = JSON.stringify(error); 
-      });
+      this.message = 'Login Ok';
+      //this.router.navigate(['/biblioTK/lista-libro']);
+      this.db_libros.getUser().then(result => this.printRolScreen(result)).catch(error => console.log(error));
+    }, error => {
+      console.error(error);
+      this.message = JSON.stringify(error);
+    });
 
   }
 
   logout() {
     this.db_libros.logout().subscribe(data => {
-        this.message = 'Logout Ok';
-      }, error => {
-        console.error(error);
-        this.message = JSON.stringify(error);
-      });
+      this.message = 'Logout Ok';
+    }, error => {
+      console.error(error);
+      this.message = JSON.stringify(error);
+    });
   }
 
   /*----------- FIN LOGIN/LOGOUT ---------*/
 
   printRolScreen(rol) {
-    
-    if(rol=='BIBLIOTECARIO')
-    this.router.navigate(['/biblioTK/lista-libro']);
-    else if(rol=='ENCARGADO_PRESTAMOS')
-    this.router.navigate(['/biblioTK/libros-prestamo',{name: this.user}]);
+
+    if (rol == 'ROLE_BIBLIOTECARIO')
+      this.router.navigate(['/biblioTK/lista-libro']);
+    else if (rol == 'ROLE_ENCARGADO_PRESTAMOS')
+      this.router.navigate(['/biblioTK/libros-prestamo', { name: this.user }]);
 
   }
 }
 
-   

@@ -57,7 +57,7 @@ export class DbLibroService {
       const params = new HttpParams()
         .set('username', this.user)
         .set('password', this.pass);
-      return (this.http.get('http://localhost:8080/current', {
+      return (this.http.get('http://localhost:8080/api/current-user', {
         headers: headers,
         params: params,
         withCredentials: true})

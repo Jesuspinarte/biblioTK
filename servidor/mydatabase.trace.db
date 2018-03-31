@@ -4283,3 +4283,6 @@ insert into libro ( id, nombre,isbn,autores,prestado,despensa) VALUES (1, 'IT', 
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1246)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1234)
 	at co.edu.javeriana.myapp.server.myappserver.MyappServerApplication.main(MyappServerApplication.java:11)
+2018-03-31 08:56:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "AUTHORITIES BINARY(255)": "X'aced00057372003a636f2e6564752e6a6176657269616e612e6d796170702e7365727665722e6d796170707365727665722e6d6f64656c2e456d706c656164... (695)"; SQL statement:
+insert into empleado_authorities (empleado_id, authorities) values (?, ?) [22001-196]
