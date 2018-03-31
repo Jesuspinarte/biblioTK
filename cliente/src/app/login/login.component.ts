@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
     console.log(this.user + ' - ' + this.password);
     this.db_libros.login(this.user, this.password).subscribe(data => {
         this.message = 'Login Ok';
-        this.router.navigate(['/biblioTK/lista-libro']);
+        this.router.navigate(['/biblioTK/lista-libro'])
+
       }, error => {
         console.error(error);
         this.message = JSON.stringify(error);
