@@ -37,6 +37,10 @@ public class Libro {
 		this.nombre = libro.nombre;
 		this.isbn = libro.isbn;
 		this.autores = libro.autores;
+		this.prestado = libro.prestado;
+		this.fechaPrestamo = libro.fechaPrestamo;
+		this.finPrestamo = libro.finPrestamo;
+		this.prestadoA = libro.prestadoA;
 		return this;
 	}
 
