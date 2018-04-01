@@ -22,9 +22,9 @@ export class AddLibroComponent implements OnInit {
   }
 
   submitFunct(nombre, isbn, autores): void {
-    var id= this.pickid();
+    //var id= this.pickid();
 
-   if(!this.db_libros.add(id,nombre, isbn, autores))
+   /*if(!this.db_libros.add(id,nombre, isbn, autores))
     window.alert("Llene todos los campos")
    
     else{
@@ -41,6 +41,7 @@ export class AddLibroComponent implements OnInit {
   } else {
    return this.libros.length + 1;
    }
+   */
  }
 
 }

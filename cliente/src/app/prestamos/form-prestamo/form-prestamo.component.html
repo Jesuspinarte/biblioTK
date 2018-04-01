@@ -1,0 +1,37 @@
+<div>
+  <!-- ENRUTA LA PÁGINA -->
+    <div>
+      NOMBRE: <br>
+      {{libro.nombre}}
+    </div>
+    <div>
+      ISBN: <br>
+      {{libro.ISBN}}
+      </div>
+    <div>
+      AUTORES: <br>
+      {{libro.autores}}
+    </div>
+    <div>
+      NOMBRE: <br>
+      {{libro.nombre}}
+    </div>
+    <div>
+      Nombre prestamista: <br>
+      <input class="inputPrestamista" type="text" name="libro_prestadoA" placeholder="Prestamista del libro" value="{{libro.prestadoA}}" #prestamistaEditar required> 
+ 
+    </div>
+
+    <div>
+     Tiempo de prestamo(En Meses): <br>
+     <input type="number"  placeholder="Meses" name="input"  [(ngModel)]="time"
+     min="1" max="6"  #tiempo required>
+    </div>
+
+
+    <input type="submit" value="Enviar cambios"
+           (click) = 'modificarLibro( prestamistaEditar.value, tiempo.value);
+           prestamistaEditar.value = ""; tiempo.value = "";  '>
+    <br>
+    <a [routerLink]="['/biblioTK/libros-prestamo']" routerLinkActive="router-link-active" >REGRESAR</a>
+  </div>

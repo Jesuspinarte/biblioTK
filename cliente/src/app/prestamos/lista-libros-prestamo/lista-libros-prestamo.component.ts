@@ -30,60 +30,17 @@ prestamista: String;
   }
   
   ngOnInit() {
-    window.alert("iniciando");
+    
 
     this.db_libros.listarLibros()
     .subscribe(libros => this.libros = libros);
   }
 
-  prestar(libro1: Libro){
-    this.libro = libro1;
-    
- var answer=prompt('Digite el nombre de la persona');
-    if(answer !=null)
-    {
-    this.person = answer;
-    this.armarLibro();
-    this.db_libros.upDatePrestamo(this.libro);
-    this.db_libros.subscribePrestamo(this.libro);
-    }
-    else if(!answer)
-    {
-    alert('Se necesita el nombre de la persona');
-    return false;
-    }
-else
-{
-alert('Prestamo Cancelado');
-    return false;
-}
-        
-}
-
-  armarLibro(){
-
-  let actual = new Date();
-  this.libro.fechaPrestamo = actual; 
-  let suma = new Date()
-  this.libro.finPrestamo=this.addMonthsUTC(suma,this.time);
-  this.libro.prestado = true;
-  this.libro.prestadoA = this.person;
-   
-  
-  }
-  addMonthsUTC (date, count) {
-    if (date && count) {
-      var m, d = (date = new Date(+date)).getUTCDate()
-  
-      date.setUTCMonth(date.getUTCMonth() + count, 1)
-      m = date.getUTCMonth()
-      date.setUTCDate(d)
-      if (date.getUTCMonth() !== m) date.setUTCDate(0)
-    }
-    return date
-  }
+ 
  
   devolver(libro1: Libro){
+
+    
     this.libro = libro1;
     this.armarLibro2();
     this.db_libros.upDatePrestamo(this.libro);
@@ -94,8 +51,10 @@ alert('Prestamo Cancelado');
 
      
       this.libro.prestado = false;
-       
-      
+      this.libro.prestadoA = '';
+      this.libro.fechaPrestamo = new Date();
+      this.libro.finPrestamo = 
+      new Date();
       }
 
         

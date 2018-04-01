@@ -14,6 +14,7 @@ import { EditarLibroComponent } from './libros/editar-libro/editar-libro.compone
 import { AddLibroComponent } from './libros/add-libro/add-libro.component';
 import { LoginComponent } from './login/login.component';
 import { ListaLibrosPrestamoComponent } from './prestamos/lista-libros-prestamo/lista-libros-prestamo.component';
+import { FormPrestamoComponent } from './prestamos/form-prestamo/form-prestamo.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ListaLibrosPrestamoComponent } from './prestamos/lista-libros-prestamo/
     AddLibroComponent,
     LoginComponent,
     ListaLibrosPrestamoComponent,
+    FormPrestamoComponent,
 
     
   ],
