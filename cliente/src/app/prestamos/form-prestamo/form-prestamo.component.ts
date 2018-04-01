@@ -12,7 +12,7 @@ import * as moment from 'moment'
 export class FormPrestamoComponent implements OnInit {
 
   LibroID: number;
-  libro : Libro;
+  libro: Libro = { id: -1, nombre: '', isbn: '', autores: '', fechaPrestamo: new Date(), finPrestamo: new Date(), prestado: false, prestadoA: ''};
   constructor(private ruta: ActivatedRoute,
     public db_libros: DbLibroService,
     public router: Router) { 

@@ -11,8 +11,8 @@ import { DbLibroService } from '../shared/db-libro.service';
 export class EditarLibroComponent implements OnInit {
 
   LibroID: number;
-  //libro: Libro = { id: -1, nombre: '', isbn: '', autores: ''};
-    libro : Libro;
+  libro: Libro = { id: -1, nombre: '', isbn: '', autores: '', fechaPrestamo: new Date(), finPrestamo: new Date(), prestado: false, prestadoA: ''};
+  //  libro : Libro;
   constructor( 
     private ruta: ActivatedRoute,
     public db_libros: DbLibroService
@@ -23,7 +23,7 @@ export class EditarLibroComponent implements OnInit {
       .subscribe( params => this.LibroID = +params['id'] );
       this.db_libros.listarLibros().subscribe( libros => this.libro = libros.find( l => l.id === this.LibroID ) );
   }
-/*
+
   modificarLibro( nombre: string, isbn: string, autores: string ): void {
     if( nombre === "" || isbn === "" || autores === "" ) {
       return 
@@ -35,5 +35,5 @@ export class EditarLibroComponent implements OnInit {
       this.db_libros.update( this.libro );
     }
   }
-*/
+
 }

@@ -17,9 +17,22 @@ export class LoginComponent implements OnInit {
   message: any;
   rol: String;
 
+  conectado: boolean = false;
+
   constructor(private db_libros: DbLibroService, public router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+    this.db_libros.getUsername().then(user => this.user = user).catch(error => console.log(error));
+    this.db_libros.getUser().then(rol => {
+      
+      this.rol = rol;
+      if( this.rol != null )
+        this.conectado = true;
+
+    }).catch(error => console.log(error));
+
+  }
 
   /*----------- INICIO LOGIN/LOGOUT ---------*/
 
@@ -27,6 +40,7 @@ export class LoginComponent implements OnInit {
     console.log(this.user + ' - ' + this.password);
     this.db_libros.login(this.user, this.password).subscribe(data => {
       this.message = 'Login Ok';
+      this.conectado = true;
       //this.router.navigate(['/biblioTK/lista-libro']);
       this.db_libros.getUser().then(result => this.printRolScreen(result)).catch(error => console.log(error));
     }, error => {
@@ -39,6 +53,7 @@ export class LoginComponent implements OnInit {
   logout() {
     this.db_libros.logout().subscribe(data => {
       this.message = 'Logout Ok';
+      this.conectado = false;
     }, error => {
       console.error(error);
       this.message = JSON.stringify(error);
@@ -49,9 +64,20 @@ export class LoginComponent implements OnInit {
 
   printRolScreen(rol) {
 
+    this.rol = rol;
+
     if (rol == 'ROLE_BIBLIOTECARIO')
       this.router.navigate(['/biblioTK/lista-libro']);
     else if (rol == 'ROLE_ENCARGADO_PRESTAMOS')
+      this.router.navigate(['/biblioTK/libros-prestamo', { name: this.user }]);
+
+  }
+
+  toPrincipal(rol){
+
+    if (this.rol == 'ROLE_BIBLIOTECARIO')
+      this.router.navigate(['/biblioTK/lista-libro']);
+    else if (this.rol == 'ROLE_ENCARGADO_PRESTAMOS')
       this.router.navigate(['/biblioTK/libros-prestamo', { name: this.user }]);
 
   }
