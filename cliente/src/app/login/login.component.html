@@ -1,4 +1,5 @@
 <div *ngIf="!conectado">
+
   <form (ngSubmit)="doLogin()">
     <input type="text" [(ngModel)]="user" name="user" placeholder="Usuario">
     <input type="text" [(ngModel)]="password" name="pass" placeholder="Contraseña">

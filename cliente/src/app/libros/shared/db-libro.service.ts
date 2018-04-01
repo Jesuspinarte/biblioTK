@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DbLibroService {
 
-  
+
   // IDs reciclados
   ids: number[] = [];
 
@@ -19,8 +19,7 @@ export class DbLibroService {
   user = "";
   pass = "";
 
-  constructor(private http: HttpClient) 
-  {  
+  constructor(private http: HttpClient) {
   }
 
   /*----------- INICIO LOGIN/LOGOUT ---------*/
@@ -50,23 +49,24 @@ export class DbLibroService {
   /*----------- FIN LOGIN/LOGOUT ---------*/
 
   /*----------- Recuperar Usuario ---------*/
-    getUser(): Promise<any> {
-      const headers = new HttpHeaders();
-      const params = new HttpParams()
-        .set('username', this.user)
-        .set('password', this.pass);
-      return (this.http.get('http://localhost:8080/api/current-user', {
-        headers: headers,
-        params: params,
-        withCredentials: true})
-          .toPromise()
-          .then(this.extractData)
-          .catch(this.handleError));
+  getUser(): Promise<any> {
+    const headers = new HttpHeaders();
+    const params = new HttpParams()
+      .set('username', this.user)
+      .set('password', this.pass);
+    return (this.http.get('http://localhost:8080/api/current-user', {
+      headers: headers,
+      params: params,
+      withCredentials: true
+    })
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError));
   }
 
-    private extractData(res: Response) {
-      var obj = JSON.parse(JSON.stringify(res));
-     return (obj.rol);
+  private extractData(res: Response) {
+    var obj = JSON.parse(JSON.stringify(res));
+    return (obj.rol);
   }
 
   getUsername(): Promise<any> {
@@ -77,23 +77,37 @@ export class DbLibroService {
     return (this.http.get('http://localhost:8080/api/current-user', {
       headers: headers,
       params: params,
-      withCredentials: true})
-        .toPromise()
-        .then(this.extractDataUsername)
-        .catch(this.handleError));
-}
+      withCredentials: true
+    })
+      .toPromise()
+      .then(this.extractDataUsername)
+      .catch(this.handleError));
+  }
 
   private extractDataUsername(res: Response) {
     var obj = JSON.parse(JSON.stringify(res));
-   return (obj.username);
-}
+    return (obj.username);
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
-}
+  }
   /*----------- FIN Recuperar Usuario ---------*/
 
+
+  /*----------- INICIO RECUPERAR BIBLIOTECAS ---------*/
+
+  getBibliotecas(): Observable<string[]> {
+
+    return this.http.get<string[]>(
+      'http://localhost:8080/todas-bibliotecas'
+
+    );
+
+  }
+
+  /*----------- FIN RECUPERAR BIBLIOTECAS ---------*/
 
   listarLibros(): Observable<Libro[]> {
     const headers = new HttpHeaders();
@@ -111,9 +125,9 @@ export class DbLibroService {
     return (this.ids);
   }
 
-  add( nombre, isbn, autores ): Observable<Libro[]> {
+  add(nombre, isbn, autores): Observable<Libro[]> {
     if (nombre === "" || isbn === "" || autores === "") {
-      return ;
+      return;
     } else {
 
       var add_lib = new Libro();
@@ -142,8 +156,8 @@ export class DbLibroService {
   }
 
   subscribePrestamo(up_libro: Libro) {
-      this.upDatePrestamo(up_libro)
-        .subscribe(libro => this.libros.push(libro));
+    this.upDatePrestamo(up_libro)
+      .subscribe(libro => this.libros.push(libro));
   }
 
   delete(del_libro: Libro): boolean {
@@ -160,19 +174,19 @@ export class DbLibroService {
     });
   }
 
-  upDatePrestamo(libro: Libro): Observable<Libro>{
-   
+  upDatePrestamo(libro: Libro): Observable<Libro> {
+
     const headers = new HttpHeaders();
     const params = new HttpParams()
       .set('username', this.user)
       .set('password', this.pass);
-    return (this.http.put<Libro>('http://localhost:8080/libros/prestamos',libro, {
+    return (this.http.put<Libro>('http://localhost:8080/libros/prestamos', libro, {
       headers: headers,
       params: params,
       withCredentials: true
     }));
-      
-      
+
+
   }
 
   deleteLibro(libro: Libro): Observable<Libro> {

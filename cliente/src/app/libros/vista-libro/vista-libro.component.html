@@ -9,5 +9,16 @@
   <div>
     AUTORES: {{libro.autores}}
   </div>
-  
+
+  <div *ngIf="libro.prestado">
+    LIBRE: NO
+    <br> Persona: {{libro.prestadoA}}
+    <br> Fecha de prestamo: {{libro.fechaPrestamo | date:'MM/dd/yyyy' }}
+    <br> Finalizacion de prestamo: {{libro.finPrestamo | date:'MM/dd/yyyy' }}
+    <br>
+  </div>
+  <div *ngIf="!libro.prestado">
+    LIBRE: SI
+  </div>
+
 </div>

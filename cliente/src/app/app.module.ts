@@ -28,7 +28,7 @@ import { FormPrestamoComponent } from './prestamos/form-prestamo/form-prestamo.c
     ListaLibrosPrestamoComponent,
     FormPrestamoComponent,
 
-    
+
   ],
   imports: [
     BrowserModule,

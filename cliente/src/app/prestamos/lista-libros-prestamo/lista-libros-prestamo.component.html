@@ -1,32 +1,37 @@
 <app-login></app-login>
 <h1>Bienvenido {{ prestamista }} </h1>
 
-    <table class="table">
-        <tr *ngFor="let l of libros">
-          <td class="libro_tabla">
-            Id: {{l.id}} <br>
-            Titulo: {{l.nombre}} <br>
-            Autores: {{l.autores}} <br>
-            ISBN: {{l.isbn}}  <br>
-            <div *ngIf= "l.prestado" >
-            LIBRE: NO <br>
-            Persona: {{l.prestadoA}}  <br>
-            Fecha de prestamo: {{l.fechaPrestamo | date:'MM/dd/yyyy'  }}  <br>
-            Finalizacion de prestamo: {{l.finPrestamo | date:'MM/dd/yyyy' }}  <br>
-            </div>
-            <div *ngIf= "!l.prestado" >
-              LIBRE: SI
-            </div>
-          </td>
-          <td class= "btn" >
-           <div *ngIf="!l.prestado"> <button [routerLink]="['/biblioTK/prestar-libro/',l.id]" routerLinkActive="router-link-active"><strong>Prestar</strong></button> </div>
-          <div *ngIf="l.prestado"> <button (click)="devolver(l)"><strong>Devolver</strong></button> </div>
-          
-          </td>
-        </tr>
-      </table>
-      
+<table class="table">
+  <tr *ngFor="let l of libros">
+    <td class="libro_tabla">
+      Id: {{l.id}}
+      <br> Titulo: {{l.nombre}}
+      <br> Autores: {{l.autores}}
+      <br> ISBN: {{l.isbn}}
+      <br>
+      <div *ngIf="l.prestado">
+        LIBRE: NO
+        <br> Persona: {{l.prestadoA}}
+        <br> Fecha de prestamo: {{l.fechaPrestamo | date:'MM/dd/yyyy' }}
+        <br> Finalizacion de prestamo: {{l.finPrestamo | date:'MM/dd/yyyy' }}
+        <br>
+      </div>
+      <div *ngIf="!l.prestado">
+        LIBRE: SI
+      </div>
+    </td>
+    <td class="btn">
+      <div *ngIf="!l.prestado">
+        <button [routerLink]="['/biblioTK/prestar-libro/',l.id]" routerLinkActive="router-link-active">
+          <strong>Prestar</strong>
+        </button>
+      </div>
+      <div *ngIf="l.prestado">
+        <button (click)="devolver(l)">
+          <strong>Devolver</strong>
+        </button>
+      </div>
 
-
-
-     
+    </td>
+  </tr>
+</table>

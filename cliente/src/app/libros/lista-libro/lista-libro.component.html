@@ -7,9 +7,9 @@
       <li *ngFor="let l of libros">
         <div>{{l.nombre}}</div>
         <div>
-          <a (click) = "selectLibro(l)" [routerLink]="" routerLinkActive="router-link-active">VER</a>
+          <a (click)="selectLibro(l)" [routerLink]="" routerLinkActive="router-link-active">VER</a>
           <a [routerLink]="['/biblioTK/editar-libro/',l.id]" routerLinkActive="router-link-active">EDITAR</a>
-          <a (click) = "eliminarLibro(l)" [routerLink]="" routerLinkActive="router-link-active">BORRAR</a>
+          <a (click)="eliminarLibro(l)" [routerLink]="" routerLinkActive="router-link-active">BORRAR</a>
         </div>
       </li>
     </ol>

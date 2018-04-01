@@ -11,28 +11,28 @@ import { DbLibroService } from '../shared/db-libro.service';
 export class EditarLibroComponent implements OnInit {
 
   LibroID: number;
-  libro: Libro = { id: -1, nombre: '', isbn: '', autores: '', fechaPrestamo: new Date(), finPrestamo: new Date(), prestado: false, prestadoA: ''};
+  libro: Libro = { id: -1, nombre: '', isbn: '', autores: '', fechaPrestamo: new Date(), finPrestamo: new Date(), prestado: false, prestadoA: '' };
   //  libro : Libro;
-  constructor( 
+  constructor(
     private ruta: ActivatedRoute,
     public db_libros: DbLibroService
   ) { }
 
   ngOnInit() {
     this.ruta.params
-      .subscribe( params => this.LibroID = +params['id'] );
-      this.db_libros.listarLibros().subscribe( libros => this.libro = libros.find( l => l.id === this.LibroID ) );
+      .subscribe(params => this.LibroID = +params['id']);
+    this.db_libros.listarLibros().subscribe(libros => this.libro = libros.find(l => l.id === this.LibroID));
   }
 
-  modificarLibro( nombre: string, isbn: string, autores: string ): void {
-    if( nombre === "" || isbn === "" || autores === "" ) {
-      return 
+  modificarLibro(nombre: string, isbn: string, autores: string): void {
+    if (nombre === "" || isbn === "" || autores === "") {
+      return
     } else {
       this.libro.nombre = nombre;
       this.libro.isbn = isbn;
       this.libro.autores = autores;
 
-      this.db_libros.update( this.libro );
+      this.db_libros.update(this.libro);
     }
   }
 

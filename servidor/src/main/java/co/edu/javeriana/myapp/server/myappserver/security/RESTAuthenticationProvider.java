@@ -26,6 +26,7 @@ public class RESTAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String name = authentication.getName();
 		String password = authentication.getCredentials().toString();
+		
 
 		Empleado user = userDetailsService.loadUserByUsername(name);
 		

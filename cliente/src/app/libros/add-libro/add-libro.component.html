@@ -1,14 +1,14 @@
 <app-login></app-login>
 <input class="inputNombre" type="text" #nombreAdd placeholder="Ingrese nombre" required>
 
-<input class="inputIsbn"  type="text" #isbnAdd placeholder="Ingrese ISBN" required>
+<input class="inputIsbn" type="text" #isbnAdd placeholder="Ingrese ISBN" required>
 
 <div>
     <textarea cols="47" rows="3" name="comment" form="usrform" placeholder="Ingrese Autores" #autoresAdd required></textarea>
 </div>
 
 
-<input class="inputAutores" type="submit" value="Agregar Libro" (click) = 'submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); '>
+<input class="inputAutores" type="submit" value="Agregar Libro" (click)='submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); '>
 <br>
 <div>
     <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>

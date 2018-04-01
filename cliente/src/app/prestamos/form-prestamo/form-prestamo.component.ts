@@ -12,51 +12,51 @@ import * as moment from 'moment'
 export class FormPrestamoComponent implements OnInit {
 
   LibroID: number;
-  libro: Libro = { id: -1, nombre: '', isbn: '', autores: '', fechaPrestamo: new Date(), finPrestamo: new Date(), prestado: false, prestadoA: ''};
+  libro: Libro = { id: -1, nombre: '', isbn: '', autores: '', fechaPrestamo: new Date(), finPrestamo: new Date(), prestado: false, prestadoA: '' };
   constructor(private ruta: ActivatedRoute,
     public db_libros: DbLibroService,
-    public router: Router) { 
+    public router: Router) {
 
-     
-    }
+
+  }
 
   ngOnInit() {
 
     this.ruta.params
-    .subscribe( params => this.LibroID = +params['id'] );
-    this.db_libros.listarLibros().subscribe( libros => this.libro = libros.find( l => l.id === this.LibroID ) );
+      .subscribe(params => this.LibroID = +params['id']);
+    this.db_libros.listarLibros().subscribe(libros => this.libro = libros.find(l => l.id === this.LibroID));
 
-    
+
   }
 
-  modificarLibro( prestamistaEditar, tiempo){
+  modificarLibro(prestamistaEditar, tiempo) {
 
-    this.armarLibro(prestamistaEditar,tiempo);
+    this.armarLibro(prestamistaEditar, tiempo);
     this.db_libros.upDatePrestamo(this.libro);
     this.db_libros.subscribePrestamo(this.libro);
 
     window.alert("Libro Agregado Correctamente")
     this.router.navigate(['/biblioTK/libros-prestamo']);
-    
+
   }
 
-  armarLibro(prestamistaEditar,tiempo:number){
+  armarLibro(prestamistaEditar, tiempo: number) {
 
     let actual = new Date();
-    this.libro.fechaPrestamo = actual; 
+    this.libro.fechaPrestamo = actual;
     let suma = new Date()
-    this.libro.finPrestamo=this.addMonthsUTC(suma,tiempo);
+    this.libro.finPrestamo = this.addMonthsUTC(suma, tiempo);
     this.libro.prestado = true;
     this.libro.prestadoA = prestamistaEditar;
 
-    
-    }
 
-    addMonthsUTC (date,time) {
-     
-      var endDateMoment = moment(date); // moment(...) can also be used to parse dates in string format
-      endDateMoment.add(time, 'months');
-      return endDateMoment.toDate();
+  }
+
+  addMonthsUTC(date, time) {
+
+    var endDateMoment = moment(date); // moment(...) can also be used to parse dates in string format
+    endDateMoment.add(time, 'months');
+    return endDateMoment.toDate();
   }
 
 }

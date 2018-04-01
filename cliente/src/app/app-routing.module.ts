@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'biblioTK/lista-libro', component: ListaLibroComponent },
   { path: 'biblioTK/editar-libro/:id', component: EditarLibroComponent },
   { path: 'biblioTK/anadir-libro', component: AddLibroComponent }, //temp
-  { path: 'biblioTK/libros-prestamo', component: ListaLibrosPrestamoComponent }, 
-  { path: 'biblioTK/prestar-libro/:id', component: FormPrestamoComponent }, 
+  { path: 'biblioTK/libros-prestamo', component: ListaLibrosPrestamoComponent },
+  { path: 'biblioTK/prestar-libro/:id', component: FormPrestamoComponent },
   { path: '', pathMatch: 'full', redirectTo: 'biblioTK/login' }
 
 ];
@@ -25,4 +25,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
- 
+

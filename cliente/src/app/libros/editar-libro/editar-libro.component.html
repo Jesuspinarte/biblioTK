@@ -1,23 +1,26 @@
 <app-login></app-login>
 <div>
   <!-- ENRUTA LA PÁGINA -->
-    <div>
-      NOMBRE: <br>
-      <input class="inputNombre" type="text" name="libro_nombre" placeholder="Nombre del libro" value="{{libro.nombre}}" #nombreEditar required> 
-    </div>
-    <div>
-      ISBN: <br>
-      <input class="inputIsbn" type="text" name="libro_isbn" placeholder="ISBN del libro" value="{{libro.isbn}}" #isbnEditar required> 
-    </div>
-    <div>
-      AUTORES: <br>
-      <textarea class="inputAutores" name="autores_libro" cols="30" rows="10" form="usrform" placeholder="Autores del libro" value="{{libro.autores}}" #autoresEditar required></textarea>
-    </div>
-
-    <input type="submit" value="Enviar cambios"
-           (click) = 'modificarLibro( nombreEditar.value, isbnEditar.value, autoresEditar.value );
-           nombreEditar.value = ""; isbnEditar.value = ""; autoresEditar.value = ""; '>
+  <div>
+    NOMBRE:
     <br>
-    <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active" >REGRESAR</a>
+    <input class="inputNombre" type="text" name="libro_nombre" placeholder="Nombre del libro" value="{{libro.nombre}}" #nombreEditar
+      required>
   </div>
-  
+  <div>
+    ISBN:
+    <br>
+    <input class="inputIsbn" type="text" name="libro_isbn" placeholder="ISBN del libro" value="{{libro.isbn}}" #isbnEditar required>
+  </div>
+  <div>
+    AUTORES:
+    <br>
+    <textarea class="inputAutores" name="autores_libro" cols="30" rows="10" form="usrform" placeholder="Autores del libro" value="{{libro.autores}}"
+      #autoresEditar required></textarea>
+  </div>
+
+  <input type="submit" value="Enviar cambios" (click)='modificarLibro( nombreEditar.value, isbnEditar.value, autoresEditar.value );
+           nombreEditar.value = ""; isbnEditar.value = ""; autoresEditar.value = ""; '>
+  <br>
+  <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
+</div>
