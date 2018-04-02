@@ -45,7 +45,7 @@ public class LibroService {
 		System.out.println(libro.getAutores());
 		System.out.println(libro.getIsbn());
 		Long aux = new Long(1);
-		libro.setDespensa( repository.findById(aux).get().getDespensa() );
+		//libro.setDespensa( repository.findById(aux).get().getDespensa() );
 		
 			
 		repository.save(libro);

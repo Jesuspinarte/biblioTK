@@ -45,6 +45,7 @@ export class ListaLibrosPrestamoComponent implements OnInit {
     this.armarLibro2();
     this.db_libros.upDatePrestamo(this.libro);
     this.db_libros.subscribePrestamo(this.libro);
+    
   }
 
   armarLibro2() {

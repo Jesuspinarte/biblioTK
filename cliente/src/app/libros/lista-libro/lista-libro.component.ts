@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Libro } from '../shared/libro';
 import { DbLibroService } from '../shared/db-libro.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lista-libro',
@@ -13,11 +14,16 @@ export class ListaLibroComponent implements OnInit {
   libro_seleccionado: Libro;
   libro_visible: number = -1;
 
-  constructor(public db_libros: DbLibroService) { }
+  constructor(public db_libros: DbLibroService) {
+    
+   }
 
   ngOnInit() {
     this.db_libros.listarLibros()
       .subscribe(libros => this.libros = libros);
+
+ 
+   
   }
 
   selectLibro(libro: Libro) {
@@ -30,8 +36,12 @@ export class ListaLibroComponent implements OnInit {
     this.db_libros.getIDs().push(libro.id);
     this.db_libros.delete(libro);
     window.alert(libro.nombre + " eliminado correctamente")
+    this.db_libros.listarLibros()
+    window.location.reload();
+    
 
   }
+
 
 
 }

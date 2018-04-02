@@ -41,6 +41,7 @@ public class Libro {
 		this.fechaPrestamo = libro.fechaPrestamo;
 		this.finPrestamo = libro.finPrestamo;
 		this.prestadoA = libro.prestadoA;
+		
 		return this;
 	}
 
