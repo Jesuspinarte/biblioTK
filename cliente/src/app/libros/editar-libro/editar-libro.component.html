@@ -1,26 +1,33 @@
-<app-login></app-login>
-<div>
+<div class="contenedor_banner_superior">
+  <img class="img_logo" alt="BiblioTK logo" src="assets/logo_banner_2.png">
+  <app-login class="contenedor_login"></app-login>
+</div>
+
+<div class="contenedor_formulario">
   <!-- ENRUTA LA PÁGINA -->
+  <div class="back">
+    <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
+  </div>
+
   <div>
-    NOMBRE:
+    <b>NOMBRE:</b> 
     <br>
     <input class="inputNombre" type="text" name="libro_nombre" placeholder="Nombre del libro" value="{{libro.nombre}}" #nombreEditar
       required>
   </div>
   <div>
-    ISBN:
+    <b>ISBN:</b> 
     <br>
     <input class="inputIsbn" type="text" name="libro_isbn" placeholder="ISBN del libro" value="{{libro.isbn}}" #isbnEditar required>
   </div>
   <div>
-    AUTORES:
+    <b>AUTORES:</b>
     <br>
     <textarea class="inputAutores" name="autores_libro" cols="30" rows="10" form="usrform" placeholder="Autores del libro" value="{{libro.autores}}"
       #autoresEditar required></textarea>
   </div>
 
-  <input type="submit" value="Enviar cambios" (click)='modificarLibro( nombreEditar.value, isbnEditar.value, autoresEditar.value );
+  <input class="boton" type="submit" value="Enviar cambios" (click)='modificarLibro( nombreEditar.value, isbnEditar.value, autoresEditar.value );
            nombreEditar.value = ""; isbnEditar.value = ""; autoresEditar.value = ""; '>
-  <br>
-  <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
+
 </div>

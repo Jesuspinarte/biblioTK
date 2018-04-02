@@ -1,15 +1,23 @@
-<app-login></app-login>
-<input class="inputNombre" type="text" #nombreAdd placeholder="Ingrese nombre" required>
-
-<input class="inputIsbn" type="text" #isbnAdd placeholder="Ingrese ISBN" required>
-
-<div>
-    <textarea cols="47" rows="3" name="comment" form="usrform" placeholder="Ingrese Autores" #autoresAdd required></textarea>
+<div class="contenedor_banner_superior">
+    <img class="img_logo" alt="BiblioTK logo" src="assets/logo_banner_2.png">
+    <app-login class="contenedor_login"></app-login>
 </div>
 
+<div class="contenedor_formulario">
 
-<input class="inputAutores" type="submit" value="Agregar Libro" (click)='submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); '>
-<br>
-<div>
-    <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
+    <div class="back">
+        <a [routerLink]="['/biblioTK/lista-libro']" routerLinkActive="router-link-active">REGRESAR</a>
+    </div>
+
+    <input class="inputNombre" type="text" #nombreAdd placeholder="Ingrese nombre" required>
+
+    <input class="inputIsbn" type="text" #isbnAdd placeholder="Ingrese ISBN" required>
+
+    <div class="txt_autores">
+        <textarea cols="47" rows="3" name="comment" form="usrform" placeholder="Ingrese Autores" #autoresAdd required></textarea>
+    </div>
+
+
+    <input class="boton" type="submit" value="Agregar Libro" (click)='submitFunct(nombreAdd.value, isbnAdd.value, autoresAdd.value); '>
+    <br>
 </div>

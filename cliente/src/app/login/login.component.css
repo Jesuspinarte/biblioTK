@@ -1,0 +1,14 @@
+.boton {
+    background-color: #362A23;
+    color: white;
+    border: none;
+    padding: 7px;
+}
+
+.boton:hover {
+    background-color: #c2a597;
+}
+
+.boton:focus {
+    background-color: #79675e;
+}

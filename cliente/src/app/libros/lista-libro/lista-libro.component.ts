@@ -11,6 +11,7 @@ export class ListaLibroComponent implements OnInit {
 
   libros: Libro[];
   libro_seleccionado: Libro;
+  libro_visible: number = -1;
 
   constructor(public db_libros: DbLibroService) { }
 
@@ -21,12 +22,14 @@ export class ListaLibroComponent implements OnInit {
 
   selectLibro(libro: Libro) {
     this.libro_seleccionado = libro;
+    this.libro_visible = libro.id;
   }
 
 
   eliminarLibro(libro: Libro) {
     this.db_libros.getIDs().push(libro.id);
     this.db_libros.delete(libro);
+    window.alert(libro.nombre + " eliminado correctamente")
 
   }
 

@@ -1,24 +1,33 @@
 <div *ngIf="libro">
-  Información libro: {{libro.id}}
-  <div>
-    NOMBRE: {{libro.nombre}}
-  </div>
-  <div>
-    ISBN: {{libro.isbn}}
-  </div>
-  <div>
-    AUTORES: {{libro.autores}}
+
+  <div class="titulo_info">INFORMACIÓN</div>
+
+  <div class="libro_info_principal">
+    <div>
+      <b>ID libro:</b> {{libro.id}}</div>
+    <div>
+      <b>Nombre:</b> {{libro.nombre}}</div>
+    <div>
+      <b>isbn:</b> {{libro.isbn}}</div>
+    <div>
+      <b>Autores:</b> {{libro.autores}}</div>
+    <div *ngIf="!libro.prestado">
+      <b>Libre:</b> SÍ
+    </div>
   </div>
 
-  <div *ngIf="libro.prestado">
-    LIBRE: NO
-    <br> Persona: {{libro.prestadoA}}
-    <br> Fecha de prestamo: {{libro.fechaPrestamo | date:'MM/dd/yyyy' }}
-    <br> Finalizacion de prestamo: {{libro.finPrestamo | date:'MM/dd/yyyy' }}
-    <br>
-  </div>
-  <div *ngIf="!libro.prestado">
-    LIBRE: SI
+
+  <div class="libro_info_prestamo">
+    <div *ngIf="libro.prestado">
+      <div>
+        <b>Libre:</b> NO</div>
+      <div>
+        <b>Persona:</b> {{libro.prestadoA}}</div>
+      <div>
+        <b>Fecha de prestamo:</b> {{libro.fechaPrestamo | date:'MM/dd/yyyy' }}</div>
+      <div>
+        <b>Finalizacion de prestamo:</b> {{libro.finPrestamo | date:'MM/dd/yyyy' }}</div>
+    </div>
   </div>
 
 </div>

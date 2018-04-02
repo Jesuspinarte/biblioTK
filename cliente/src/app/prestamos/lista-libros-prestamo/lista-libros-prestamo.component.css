@@ -1,19 +1,90 @@
 .libro_tabla {
 
     font-size: 20px;
-    text-align: center;
+}
+
+.contenedor_libros {
+    clear: both;
+    margin-top: 30px;
+    border: 1px solid;
+    border-color: #C7B299;
+    padding: 20px;
 }
 
 table {
+    width: 100%;
     border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid black;
+tr {
+    border: 1px solid #C7B299;
 }
 
 .formu{
     font-size: 25px;
     text-align: left;
 
+}
+
+.contenedor_banner_superior {
+    background-color: #362A23;
+    padding: 7px;
+}
+
+.contenedor_login {
+    text-align: right;
+}
+
+.img_logo {
+    width: 47px;
+    float: left;
+}
+
+.titulo_info {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #777;
+}
+
+.libro_info_principal {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.libro_info_prestamo {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.libro_info_principal b{
+    color: #6398A8;
+}
+
+.libro_info_prestamo b{
+    color: #6398A8;
+}
+
+.boton {
+    background-color: #603813;
+    color: white;
+    border: none;
+    padding: 7px;
+}
+
+.boton:hover {
+    background-color: #8C6239;
+}
+
+.boton:focus {
+    background-color: rgb(49, 35, 21);
+}
+
+.btn {
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.libro_tabla {
+    padding: 20px;
 }

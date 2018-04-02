@@ -15,6 +15,7 @@ import { AddLibroComponent } from './libros/add-libro/add-libro.component';
 import { LoginComponent } from './login/login.component';
 import { ListaLibrosPrestamoComponent } from './prestamos/lista-libros-prestamo/lista-libros-prestamo.component';
 import { FormPrestamoComponent } from './prestamos/form-prestamo/form-prestamo.component';
+import { StartComponent } from './start/start.component';
 
 
 @NgModule({
@@ -27,8 +28,7 @@ import { FormPrestamoComponent } from './prestamos/form-prestamo/form-prestamo.c
     LoginComponent,
     ListaLibrosPrestamoComponent,
     FormPrestamoComponent,
-
-
+    StartComponent,
   ],
   imports: [
     BrowserModule,

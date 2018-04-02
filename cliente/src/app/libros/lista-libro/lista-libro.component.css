@@ -1,0 +1,70 @@
+.contenedor_banner_superior {
+    background-color: #362A23;
+    padding: 7px;
+}
+
+.contenedor_login {
+    text-align: right;
+}
+
+.img_logo {
+    width: 47px;
+    float: left;
+}
+
+.lista_libros {
+    clear: both;
+    margin-top: 30px;
+    border: 1px solid;
+    border-color: #C7B299;
+    padding: 20px;
+}
+
+.boton_inferior {
+    text-align: right;
+}
+
+.boton {
+    background-color: #603813;
+    color: white;
+    border: none;
+    padding: 7px;
+}
+
+.boton:hover {
+    background-color: #8C6239;
+}
+
+.boton:focus {
+    background-color: rgb(49, 35, 21);
+}
+
+.contenedor_libro {
+    border: 1px solid;
+    border-color: #C7B299;
+    margin: 5px;
+    padding: 5px;
+}
+
+.nombre_libro {
+    font-size: 18px;
+    font-weight: bold;
+    color: #666;
+}
+
+.opciones_libro {
+    margin-top: 5px;
+    padding-left: 10px;
+}
+
+.opciones_libro a{
+    color: #55A862;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.vista_libro {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -86,6 +86,7 @@ export class DbLibroService {
 
   private extractDataUsername(res: Response) {
     var obj = JSON.parse(JSON.stringify(res));
+
     return (obj.username);
   }
 

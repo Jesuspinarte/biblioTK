@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
 
   conectado: boolean = false;
 
-  bibliotecas: string[];
-
   constructor(private db_libros: DbLibroService, public router: Router) { }
 
   ngOnInit() {
@@ -33,8 +31,6 @@ export class LoginComponent implements OnInit {
         this.conectado = true;
 
     }).catch(error => console.log(error));
-
-    this.db_libros.getBibliotecas().subscribe(bibliotecas => this.bibliotecas = bibliotecas);
 
   }
 
@@ -60,7 +56,7 @@ export class LoginComponent implements OnInit {
     this.db_libros.logout().subscribe(data => {
       this.message = 'Logout Ok';
       this.conectado = false;
-      this.router.navigate(['/biblioTK/login']);
+      this.router.navigate(['/biblioTK/start']);
     }, error => {
       console.error(error);
       this.message = JSON.stringify(error);

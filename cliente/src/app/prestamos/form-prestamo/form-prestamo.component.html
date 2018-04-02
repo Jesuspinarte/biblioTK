@@ -1,40 +1,41 @@
-<app-login></app-login>
+<div class="contenedor_banner_superior">
+  <img class="img_logo" alt="BiblioTK logo" src="assets/logo_banner_2.png">
+  <app-login class="contenedor_login"></app-login>
+</div>
 
-<div>
+<div class="contenedor_formulario">
   <!-- ENRUTA LA PÁGINA -->
+
+  <div class="back">
+    <a [routerLink]="['/biblioTK/libros-prestamo']" routerLinkActive="router-link-active">REGRESAR</a>
+  </div>
+
   <div>
-    NOMBRE:
-    <br> {{libro.nombre}}
+    <b>NOMBRE:</b> {{libro.nombre}}
   </div>
   <div>
-    ISBN:
-    <br> {{libro.ISBN}}
+    <b>ISBN:</b> {{libro.isbn}}
   </div>
   <div>
-    AUTORES:
-    <br> {{libro.autores}}
+    <b>AUTORES:</b> {{libro.autores}}
   </div>
   <div>
-    NOMBRE:
-    <br> {{libro.nombre}}
+    <b>NOMBRE:</b> {{libro.nombre}}
   </div>
   <div>
-    Nombre prestamista:
-    <br>
+    <b>Nombre prestamista:</b>
     <input class="inputPrestamista" type="text" name="libro_prestadoA" placeholder="Prestamista del libro" value="{{libro.prestadoA}}"
       #prestamistaEditar required>
 
   </div>
 
   <div>
-    Tiempo de prestamo(En Meses):
-    <br>
-    <input type="number" placeholder="Meses" name="input" [(ngModel)]="time" min="1" max="6" #tiempo required>
+    <b>Tiempo de prestamo(En Meses):</b>
+    <input class="inputPrestamista" type="number" placeholder="Meses" name="input" [(ngModel)]="time" min="1" max="6" #tiempo required>
   </div>
 
 
-  <input type="submit" value="Enviar cambios" (click)='modificarLibro( prestamistaEditar.value, tiempo.value);
+  <input class="boton" type="submit" value="Enviar cambios" (click)='modificarLibro( prestamistaEditar.value, tiempo.value);
            prestamistaEditar.value = ""; tiempo.value = "";  '>
-  <br>
-  <a [routerLink]="['/biblioTK/libros-prestamo']" routerLinkActive="router-link-active">REGRESAR</a>
+
 </div>

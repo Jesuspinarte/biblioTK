@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Libro } from '../shared/libro';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DbLibroService } from '../shared/db-libro.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class EditarLibroComponent implements OnInit {
   //  libro : Libro;
   constructor(
     private ruta: ActivatedRoute,
-    public db_libros: DbLibroService
+    public db_libros: DbLibroService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -26,13 +27,17 @@ export class EditarLibroComponent implements OnInit {
 
   modificarLibro(nombre: string, isbn: string, autores: string): void {
     if (nombre === "" || isbn === "" || autores === "") {
-      return
+      window.alert("Llene todos los campos")
+      return ;
     } else {
       this.libro.nombre = nombre;
       this.libro.isbn = isbn;
       this.libro.autores = autores;
 
       this.db_libros.update(this.libro);
+
+      window.alert(nombre + " actualizado correctamente")
+      this.router.navigate(['/biblioTK/lista-libro'])
     }
   }
 

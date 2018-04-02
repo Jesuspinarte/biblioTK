@@ -1,14 +1,18 @@
-<div *ngIf="!conectado">
+<div>
 
-  <form (ngSubmit)="doLogin()">
-    <input type="text" [(ngModel)]="user" name="user" placeholder="Usuario">
-    <input type="text" [(ngModel)]="password" name="pass" placeholder="Contraseña">
-    <button type="submit" id="login">Iniciar sesión</button>
-  </form>
+  <div *ngIf="!conectado">
 
-</div>
+    <form (ngSubmit)="doLogin()">
+      <input type="text" [(ngModel)]="user" name="user" placeholder="Usuario">
+      <input type="text" [(ngModel)]="password" name="pass" placeholder="Contraseña">
+      <button class="boton" type="submit" id="login">Iniciar sesión</button>
+    </form>
 
-<div *ngIf="conectado">
-  <button (click)="logout()">Cerrar sesión</button>
-  <button (click)="toPrincipal()">Página principal</button>
+  </div>
+
+  <div *ngIf="conectado">
+    <button class="boton" (click)="logout()">Cerrar sesión</button>
+    <button class="boton" (click)="toPrincipal()">Página principal</button>
+  </div>
+
 </div>

@@ -6,6 +6,7 @@ import { AddLibroComponent } from './libros/add-libro/add-libro.component';
 import { LoginComponent } from './login/login.component';
 import { ListaLibrosPrestamoComponent } from './prestamos/lista-libros-prestamo/lista-libros-prestamo.component';
 import { FormPrestamoComponent } from './prestamos/form-prestamo/form-prestamo.component';
+import { StartComponent } from './start/start.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'biblioTK/anadir-libro', component: AddLibroComponent }, //temp
   { path: 'biblioTK/libros-prestamo', component: ListaLibrosPrestamoComponent },
   { path: 'biblioTK/prestar-libro/:id', component: FormPrestamoComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'biblioTK/login' }
+  { path: 'biblioTK/start', component: StartComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'biblioTK/start' }
 
 ];
 

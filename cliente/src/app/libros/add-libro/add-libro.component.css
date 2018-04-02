@@ -1,4 +1,62 @@
-.btn-form {
+.contenedor_banner_superior {
+    background-color: #362A23;
+    padding: 7px;
+}
 
-margin-top:1%;
+.contenedor_login {
+    text-align: right;
+}
+
+.img_logo {
+    width: 47px;
+    float: left;
+}
+
+.contenedor_formulario {
+    clear: both;
+    margin-top: 30px;
+    border: 1px solid;
+    border-color: #C7B299;
+    padding: 20px;
+}
+
+.boton {
+    background-color: #603813;
+    color: white;
+    border: none;
+    padding: 7px;
+}
+
+.boton:hover {
+    background-color: #8C6239;
+}
+
+.boton:focus {
+    background-color: rgb(49, 35, 21);
+}
+
+.back {
+    text-align: right;
+}
+
+input {
+    width: 100%;
+    margin: 5px;
+}
+
+.inputNombre, .inputIsbn {
+    height: 22px;
+}
+
+textarea {
+    width: 100%;
+    margin: 5px;
+    height: 40px;
+}
+
+.back a{
+    color: #55A862;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
 }

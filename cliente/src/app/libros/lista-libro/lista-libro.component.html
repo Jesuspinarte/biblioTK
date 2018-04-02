@@ -1,23 +1,35 @@
-<app-login></app-login>
-<div class="lista-lib">
-  <h1>Libros</h1>
-  <nav>
+<div class="contenedor_banner_superior">
+  <img class="img_logo" alt="BiblioTK logo" src="assets/logo_banner_2.png">
+  <app-login class="contenedor_login"></app-login>
+</div>
+
+<div class="contenedor_columnas">
+
+  <div class="lista_libros">
+    <h1>Libros</h1>
     <ol>
       <!-- ENRUTA "DINÁMICAMENTE" A UNA PÁGINA -->
-      <li *ngFor="let l of libros">
-        <div>{{l.nombre}}</div>
-        <div>
-          <a (click)="selectLibro(l)" [routerLink]="" routerLinkActive="router-link-active">VER</a>
-          <a [routerLink]="['/biblioTK/editar-libro/',l.id]" routerLinkActive="router-link-active">EDITAR</a>
-          <a (click)="eliminarLibro(l)" [routerLink]="" routerLinkActive="router-link-active">BORRAR</a>
+      <li class="contenedor_libro" *ngFor="let l of libros">
+        <div class="nombre_libro">{{l.nombre}}</div>
+
+        <div class="vista_libro" *ngIf="l.id == libro_visible">
+          <app-vista-libro [libro]="libro_seleccionado"></app-vista-libro>
         </div>
+
+        <nav class="opciones_libro">
+          <a (click)="selectLibro(l)" [routerLink]="" routerLinkActive="router-link-active">VER</a>
+          <b>|</b>
+          <a [routerLink]="['/biblioTK/editar-libro/',l.id]" routerLinkActive="router-link-active">EDITAR</a>
+          <b>|</b>
+          <a (click)="eliminarLibro(l)" [routerLink]="" routerLinkActive="router-link-active">BORRAR</a>
+        </nav>
       </li>
     </ol>
-  </nav>
-</div>
 
-<div>
-  <button type="button" [routerLink]="['/biblioTK/anadir-libro' ]" routerLinkActive="router-link-active">Añadir Libro</button>
-</div>
+    <div class="boton_inferior">
+      <button class="boton" type="button" [routerLink]="['/biblioTK/anadir-libro' ]" routerLinkActive="router-link-active">Añadir Libro</button>
+    </div>
 
-<app-vista-libro [libro]="libro_seleccionado"></app-vista-libro>
+  </div>
+
+</div>

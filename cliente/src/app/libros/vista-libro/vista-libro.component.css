@@ -1,0 +1,23 @@
+.titulo_info {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #777;
+}
+
+.libro_info_principal {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.libro_info_prestamo {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.libro_info_principal b{
+    color: #6398A8;
+}
+
+.libro_info_prestamo b{
+    color: #6398A8;
+}
