@@ -15,7 +15,7 @@ class AuthorizationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
 			throws ServletException, IOException {
 		HttpSession session = req.getSession(true);
-		System.out.println("Controlling access to " + session.getAttribute("LOGGED_USER"));
+//		System.out.println("Controlling access to " + session.getAttribute("LOGGED_USER"));
 		chain.doFilter(req, resp);
 	}
 	

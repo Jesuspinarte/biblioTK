@@ -31,7 +31,7 @@ public class RESTUserDetailsService implements UserDetailsService {
 	public Empleado loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO En este método debería recuperarlse la info del usuario desde la base de datos
 		
-		System.out.println("*** Retrieving user");
+//		System.out.println("*** Retrieving user");
 		Empleado e = null;
 		
 		if( !users.containsKey(username) ) {
@@ -39,14 +39,14 @@ public class RESTUserDetailsService implements UserDetailsService {
 			
 			e = es.findByUsername(username);
 			
-			System.out.println(e.getUsername() + " " + e.getPassword() + " " + e.getId() + " " + e.getRol().toString() );
+//			System.out.println(e.getUsername() + " " + e.getPassword() + " " + e.getId() + " " + e.getRol().toString() );
 			
 			if( e != null ) {
 				Empleado ne = new Empleado( e.getUsername(), e.getPassword(), e.getRol().toString() );
 				e.setAuthorities( ne.getAuth() );
 				//es.addAuth(e);
-				System.out.println("Rol  "+ e.getRol());
-				System.out.println("AUTH  "+ e.getAuth());
+//				System.out.println("Rol  "+ e.getRol());
+//				System.out.println("AUTH  "+ e.getAuth());
 				users.put(e.getUsername(), e);
 				
 			}

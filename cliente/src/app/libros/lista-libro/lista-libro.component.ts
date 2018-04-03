@@ -35,8 +35,8 @@ export class ListaLibroComponent implements OnInit {
   eliminarLibro(libro: Libro) {
     this.db_libros.getIDs().push(libro.id);
     this.db_libros.delete(libro);
-    window.alert(libro.nombre + " eliminado correctamente")
-    this.db_libros.listarLibros()
+    
+    window.alert(libro.nombre + " eliminado correctamente");
     window.location.reload();
     
 

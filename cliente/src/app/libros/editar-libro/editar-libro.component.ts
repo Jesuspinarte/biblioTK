@@ -36,8 +36,8 @@ export class EditarLibroComponent implements OnInit {
 
       this.db_libros.update(this.libro);
 
-      window.alert(nombre + " actualizado correctamente")
-      this.router.navigate(['/biblioTK/lista-libro'])
+      window.alert(nombre + " actualizado correctamente");
+      this.router.navigate(['/biblioTK/lista-libro']);
     }
   }
 

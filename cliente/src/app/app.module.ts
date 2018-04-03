@@ -34,7 +34,7 @@ import { StartComponent } from './start/start.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [DbLibroService],
   bootstrap: [AppComponent]

@@ -157,7 +157,7 @@ public class Empleado implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		System.out.println(username + ": " + authorities);
+//		System.out.println(username + ": " + authorities);
 		return authorities;
 	}
 

@@ -52,7 +52,7 @@ public class TestService {
 	 @ResponseBody
 	 @RequestMapping(value = "/prestamos", method = RequestMethod.PUT)
 	public ResponseEntity<Libro> updatePrestamo(@RequestBody Libro libro) {
-		System.out.println("RECIBI");
+//		System.out.println("RECIBI");
 		return libroService.updatePrestamo(libro);
 		
 	}

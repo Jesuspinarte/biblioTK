@@ -41,19 +41,19 @@ public class EmpleadoService {
 	}
 
 	public Empleado findByUsername(String username) {
-		System.out.println("QUERY");
-		if (repository == null)
-			System.out.println("sadsad");
+//		System.out.println("QUERY");
+//		if (repository == null)
+//			System.out.println("sadsad");
 		return repository.findByUsername(username);
 	}
 
 	@RequestMapping("/current/{username}")
 	Empleado findCurrent(@PathVariable("username") String username) {
-		System.out.println("ENTRA");
-		System.out.println("USER: " + username);
+//		System.out.println("ENTRA");
+//		System.out.println("USER: " + username);
 		
 		Empleado e = repository.findByUsername(username);
-		System.out.println("USER BUSCADO: " + e.getNombre() + ", ROL: " + e.getNombre());
+//		System.out.println("USER BUSCADO: " + e.getNombre() + ", ROL: " + e.getNombre());
 		
 		return repository.findByUsername(username);
 

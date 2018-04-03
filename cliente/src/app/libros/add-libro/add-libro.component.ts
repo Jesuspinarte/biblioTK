@@ -29,7 +29,7 @@ export class AddLibroComponent implements OnInit {
     else {
 
       this.db_libros.add(nombre, isbn, autores).subscribe();
-      window.alert(nombre + " Añadido correctamente")
+      window.alert(nombre + " Añadido correctamente");
       this.router.navigate(['/biblioTK/lista-libro']);
     }
   }

@@ -40,10 +40,10 @@ public class LibroService {
 	@RequestMapping(value = "/libros", method = RequestMethod.POST)
 	public ResponseEntity<Libro> addLibro(@RequestBody Libro libro) {
 		
-		System.out.println(libro.getId());
-		System.out.println(libro.getNombre());
-		System.out.println(libro.getAutores());
-		System.out.println(libro.getIsbn());
+//		System.out.println(libro.getId());
+//		System.out.println(libro.getNombre());
+//		System.out.println(libro.getAutores());
+//		System.out.println(libro.getIsbn());
 		Long aux = new Long(1);
 		//libro.setDespensa( repository.findById(aux).get().getDespensa() );
 		
@@ -57,10 +57,10 @@ public class LibroService {
 	@RequestMapping(value = "/libros", method = RequestMethod.PUT)
 	public ResponseEntity<Libro> updateLibro(@RequestBody Libro libro) {
 		
-		System.out.println(libro.getId());
-		System.out.println(libro.getNombre());
-		System.out.println(libro.getAutores());
-		System.out.println(libro.getIsbn());
+//		System.out.println(libro.getId());
+//		System.out.println(libro.getNombre());
+//		System.out.println(libro.getAutores());
+//		System.out.println(libro.getIsbn());
 			
 		libro = repository.findById(libro.getId()).get().setLibro(libro);
 		repository.save(libro);
@@ -73,18 +73,18 @@ public class LibroService {
 	@RequestMapping(value = "/libros/prestamos", method = RequestMethod.PUT)
 	public ResponseEntity<Libro> updatePrestamo(@RequestBody Libro libro) {
 		
-		System.out.println(libro.getId());
-		System.out.println(libro.getNombre());
-		System.out.println(libro.getAutores());
-		System.out.println(libro.getIsbn());
-		System.out.println(libro.getPrestado());
-		System.out.println(libro.getPrestadoA());
-		System.out.println(libro.getFechaPrestamo().toString());
-		System.out.println(libro.getFinPrestamo().toString());
+//		System.out.println(libro.getId());
+//		System.out.println(libro.getNombre());
+//		System.out.println(libro.getAutores());
+//		System.out.println(libro.getIsbn());
+//		System.out.println(libro.getPrestado());
+//		System.out.println(libro.getPrestadoA());
+//		System.out.println(libro.getFechaPrestamo().toString());
+//		System.out.println(libro.getFinPrestamo().toString());
 			
 		libro = repository.findById(libro.getId()).get().setLibro(libro);
 		repository.save(libro);
-		System.out.println(repository.findById(libro.getId()).get().getPrestado());
+//		System.out.println(repository.findById(libro.getId()).get().getPrestado());
 		
 	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
@@ -93,7 +93,7 @@ public class LibroService {
 	@RequestMapping(value = "/libros/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Libro> deleteLibro(@PathVariable("id") Long id) {
 		
-		System.out.println(id);
+//		System.out.println(id);
 			
 		Libro libro = repository.findById(id).get();
 		repository.delete(libro);

@@ -162,10 +162,9 @@ export class DbLibroService {
   }
 
   delete(del_libro: Libro): boolean {
-    console.log(this.ids.length);
     this.deleteLibro(del_libro)
-      .subscribe(libro => this.libros.push(libro));
-    return;
+      .subscribe();
+    return true;
   }
 
   updateLibro(libro: Libro): Observable<Libro> {

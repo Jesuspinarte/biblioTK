@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.db_libros.getUsername().then(user => this.user = user).catch(error => console.log(error));
+    this.db_libros.getUsername().then(user => this.user = user);
     this.db_libros.getUser().then(rol => {
 
       this.rol = rol;
       if (this.rol != null)
         this.conectado = true;
 
-    }).catch(error => console.log(error));
+    });
 
   }
 
@@ -46,8 +46,10 @@ export class LoginComponent implements OnInit {
       //this.router.navigate(['/biblioTK/lista-libro']);
       this.db_libros.getUser().then(result => this.printRolScreen(result)).catch(error => console.log(error));
     }, error => {
-      console.error(error);
+      //console.error(error);
       this.message = JSON.stringify(error);
+      window.alert('DATOS INCORRECTOS:\n'
+      + 'Usuario o contraseña incorrecto');
     });
 
   }
@@ -58,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.conectado = false;
       this.router.navigate(['/biblioTK/start']);
     }, error => {
-      console.error(error);
+      //console.error(error);
       this.message = JSON.stringify(error);
     });
   }
@@ -85,9 +87,5 @@ export class LoginComponent implements OnInit {
 
   }
 
-
-  selectBiblioteca(biblioteca: string) {
-    console.log(biblioteca);
-  }
 }
 
